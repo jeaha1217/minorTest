@@ -44,4 +44,20 @@ public class StudentList {
         
         return students[no];
     }
+    static{
+        Student s = new Student();
+        s.setName("a");
+        
+        s = new Student();
+        s.setName("a");
+        
+        s = new Student();
+        s.setName("c");
+        
+        s = new Student();
+        s.setName("d");
+        
+        s = new Student();
+        s.setName("e");
+    }
 }

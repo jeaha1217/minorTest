@@ -1,37 +1,11 @@
 package bitcamp.java110.cms.control;
 import java.util.Scanner;
 
-import bitcamp.java110.cms.domain.Member;
+import bitcamp.java110.cms.dao.TeacherList;
+import bitcamp.java110.cms.domain.Teacher;
 
 public class TeacherController {
-    static Teacher[] teachers = new Teacher[5];
-    static int teacherIndex = 0;
     public static Scanner keyIn;
-    
-    static class Teacher extends Member{
-        protected String tel;
-        protected int pay;
-        protected String subject;
-        
-        public String getTel() {
-            return tel;
-        }
-        public int getPay() {
-            return pay;
-        }
-        public String getSubject() {
-            return subject;
-        }
-        public void setTel(String tel) {
-            this.tel = tel;
-        }
-        public void setPay(int pay) {
-            this.pay = pay;
-        }
-        public void setSubject(String subject) {
-            this.subject = subject;
-        }
-    }
 
     public static void serviceTeacherMenu() {
         while(true) {
@@ -56,48 +30,43 @@ public class TeacherController {
     
 
     private static void printTeachers() {
-        int count = 0;
-        for(Teacher s : teachers) {
-            if(count++ == teacherIndex)
-                break;
-            System.out.printf("%s, %s, %s, %s, %b, %s \n",
-                    s.getName(),
-                    s.getEmail(),
-                    s.getPassword(),
-                    s.getTel(),
-                    s.getPay(),
-                    s.getSubject()
+        for(int i = 0; i < TeacherList.size(); i++) {
+            Teacher t = new Teacher();
+            System.out.printf("%s, %s, %s, %s, %d, %s \n",
+                    i,
+                    t.getName(),
+                    t.getEmail(),
+                    t.getPassword(),
+                    t.getTel(),
+                    t.getPay(),
+                    t.getSubject()
                     );                
         }
     }
     
     private static void inputTeachers() {
         while(true) {
-            Teacher m = new Teacher();
+            Teacher t = new Teacher();
             
             System.out.print("이름 : ");
-            m.setName(keyIn.nextLine());
+            t.setName(keyIn.nextLine());
             
             System.out.print("이메일 : ");
-            m.setEmail(keyIn.nextLine());
+            t.setEmail(keyIn.nextLine());
             
             System.out.print("암호 : ");
-            m.setPassword(keyIn.nextLine());
+            t.setPassword(keyIn.nextLine());
             
             System.out.print("전화 : ");
-            m.setTel(keyIn.nextLine());
+            t.setTel(keyIn.nextLine());
             
             System.out.print("급여 : ");
-            m.setPay(Integer.parseInt(keyIn.nextLine()));
+            t.setPay(Integer.parseInt(keyIn.nextLine()));
             
             System.out.print("강의 과목 (예: 자바, C, C++) : ");
-            m.setSubject(keyIn.nextLine());
+            t.setSubject(keyIn.nextLine());
             
-            if (teacherIndex == teachers.length) {
-                increaseStorage();
-            }
-            
-            teachers[teacherIndex++] = m;
+            TeacherList.add(t);
             
             System.out.print("\nContinue? ( Y/n )");
             String answer = keyIn.nextLine();
@@ -107,26 +76,16 @@ public class TeacherController {
         }
     }
     
-    private static void increaseStorage() {
-        Teacher[] newList = new Teacher[teachers.length + 3];
-        for(int i = 0; i < teachers.length; i++) {
-            newList[i] = teachers[i];
-        }
-        teachers = newList;
-    }
-
     private static void deleteTeacher() {
         System.out.print("삭제할 번호?");
         int no = Integer.parseInt(keyIn.nextLine());
         
-        if(no < 0 || no >= teacherIndex) {
+        if(no < 0 || no >= TeacherList.size()) {
             System.out.println("무효한 번호입니다.");
             return;
         }
-        for (int i = no; i < teacherIndex - 1; i++) {
-            teachers[i] = teachers[i + 1];
-        }
-        teacherIndex--;
+        
+        TeacherList.remove(no);
         
         System.out.println("삭제하였습니다.");
     }
@@ -134,38 +93,40 @@ public class TeacherController {
     private static void detailTeacher() {
         System.out.print("조회할 번호 : ");
         int no = Integer.parseInt(keyIn.nextLine());
-        if(no < 0 || no >= teacherIndex) {
+        if(no < 0 || no >= TeacherList.size()) {
             System.out.println("무효한 번호입니다.");
             return;
         }
         
-        System.out.printf("이름 : %s\n", teachers[no].getName());
-        System.out.printf("이메일 : %s\n", teachers[no].getEmail());
-        System.out.printf("암호 : %s\n", teachers[no].getPassword());
-        System.out.printf("전화 : %s\n", teachers[no].getTel());
-        System.out.printf("월급 : %s\n", teachers[no].getPay());
-        System.out.printf("과목 : %s\n", teachers[no].getSubject());
+        Teacher teacher = TeacherList.get(no);
+        
+        System.out.printf("이름 : %s\n", teacher.getName());
+        System.out.printf("이메일 : %s\n", teacher.getEmail());
+        System.out.printf("암호 : %s\n", teacher.getPassword());
+        System.out.printf("전화 : %s\n", teacher.getTel());
+        System.out.printf("월급 : %s\n", teacher.getPay());
+        System.out.printf("과목 : %s\n", teacher.getSubject());
     }
 
     static{
         Teacher m = new Teacher();
         m.setName("a");
-        teachers[teacherIndex++] = m;
+        TeacherList.add(m);
         
         m = new Teacher();
         m.setName("b");
-        teachers[teacherIndex++] = m;
+        TeacherList.add(m);
         
         m = new Teacher();
         m.setName("c");
-        teachers[teacherIndex++] = m;
+        TeacherList.add(m);
         
         m = new Teacher();
         m.setName("d");
-        teachers[teacherIndex++] = m;
+        TeacherList.add(m);
         
         m = new Teacher();
         m.setName("e");
-        teachers[teacherIndex++] = m;
+        TeacherList.add(m);
     }
 }
