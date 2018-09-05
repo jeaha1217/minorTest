@@ -1,9 +1,12 @@
+package bitcamp.java110.cms.control;
 import java.util.Scanner;
+
+import bitcamp.java110.cms.domain.Member;
 
 public class TeacherController {
     static Teacher[] teachers = new Teacher[100];
     static int teacherIndex = 0;
-    static Scanner keyIn;
+    public static Scanner keyIn;
     
     static class Teacher extends Member{
         protected String tel;
@@ -63,7 +66,7 @@ public class TeacherController {
         }
     }
     
-    static void inputTeachers() {
+    private static void inputTeachers() {
         while(true) {
             Teacher m = new Teacher();
             

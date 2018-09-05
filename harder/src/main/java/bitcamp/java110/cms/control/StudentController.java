@@ -1,37 +1,47 @@
+package bitcamp.java110.cms.control;
 import java.util.Scanner;
 
-public class ManagerController {
-    static Manager[] managers = new Manager[100];
-    static int managerIndex = 0;
-    static Scanner keyIn;
+import bitcamp.java110.cms.domain.Member;
+
+public class StudentController {
+    static Student[] students = new Student[100];
+    static int studentIndex = 0;
+    public static Scanner keyIn;
     
-    static class Manager extends Member{
-        protected String position;
+    static class Student extends Member{
+        protected String school;
+        protected boolean working;
         protected String tel;
         
-        public String getPosition() {
-            return position;
+        public String getSchool() {
+            return school;
+        }
+        public boolean isWorking() {
+            return working;
         }
         public String getTel() {
             return tel;
         }
-        public void setPosition(String position) {
-            this.position = position;
+        public void setSchool(String school) {
+            this.school = school;
+        }
+        public void setWorking(boolean working) {
+            this.working = working;
         }
         public void setTel(String tel) {
             this.tel = tel;
         }
     }
-
-    public static void serviceManagerMenu() {
+    
+    public static void seviceStudentMenu() {
         while(true) {
-            System.out.println("매니저 관리>");
+            System.out.println("학생관리>");
             String command = keyIn.nextLine();
             
             if(command.equals("list")) {
-                printManagers();
+                printStudents();
             }   else if(command.equals("add")){
-                inputManagers();
+                inputStudents();
             }   else if(command.equals("quit")) {
                 break;
             }   else {
@@ -40,24 +50,25 @@ public class ManagerController {
         }
     }
     
-    private static void printManagers() {
+    private static void printStudents() {
         int count = 0;
-        for(Manager s : managers) {
-            if(count++ == managerIndex)
+        for(Student s : students) {
+            if(count++ == studentIndex)
                 break;
             System.out.printf("%s, %s, %s, %s, %b, %s \n",
                     s.getName(),
                     s.getEmail(),
                     s.getPassword(),
-                    s.getTel(),
-                    s.getPosition()
+                    s.getSchool(),
+                    s.isWorking(),
+                    s.getTel()
                     );                
         }
     }
     
-    static void inputManagers() {
+    private static void inputStudents() {
         while(true) {
-            Manager m = new Manager();
+            Student m = new Student();
             
             System.out.print("이름 : ");
             m.setName(keyIn.nextLine());
@@ -68,16 +79,16 @@ public class ManagerController {
             System.out.print("암호 : ");
             m.setPassword(keyIn.nextLine());
             
-            System.out.print("전화 : ");
-            m.setTel(keyIn.nextLine());
+            System.out.print("최종학력 : ");
+            m.setSchool(keyIn.nextLine());
+            
+            System.out.print("재직 여부 : ");
+            m.setWorking(Boolean.parseBoolean(keyIn.nextLine()));
             
             System.out.print("전화 : ");
             m.setTel(keyIn.nextLine());
             
-            System.out.print("직위 : ");
-            m.setPosition(keyIn.nextLine());
-            
-            managers[managerIndex++] = m;
+            students[studentIndex++] = m;
             
             System.out.print("\nContinue? ( Y/n )");
             String answer = keyIn.nextLine();
@@ -86,5 +97,5 @@ public class ManagerController {
             }
         }
     }
-
+    
 }
