@@ -7,8 +7,6 @@ public class App {
         protected String email;
         protected String password;
         
-        //  인스턴스의 메모리를 다루는 operator = getter/setter = accessor = property = message
-        
         public String getName() {
             return name;
         }
@@ -28,13 +26,76 @@ public class App {
             this.password = password;
         }
     }
-    //  Member를 담는 배열.
+
     static Member[] members = new Member[100];
-    
     
     static int index = 0;
     
     static Scanner keyIn = new Scanner(System.in);
+    
+    public static void main(String[] args) {
+        
+        while(true) {
+            String menu = promptMenu();
+            
+            if(menu.equals("1")) {
+                seviceStudentMenu();
+            }   else if(menu.equals("0")) {
+                System.out.println("Bye!");
+                break;
+            }
+        }
+        
+        keyIn.close();
+        
+    }
+
+    private static void seviceStudentMenu() {
+        while(true) {
+            System.out.println("학생관리>");
+            String command = keyIn.nextLine();
+            
+            if(command.equals("list")) {
+                printMembers();
+            }   else if(command.equals("add")){
+                inputMembers();
+            }   else if(command.equals("quit")) {
+                break;
+            }   else {
+                System.out.println("유효하지 않는 명령입니다.");
+            }
+        }
+    }
+
+    private static String promptMenu() {
+        System.out.println("[메뉴]");
+        System.out.println("1.학생 관리");
+        System.out.println("2.강사 관리");
+        System.out.println("3.매니져 관리");
+        System.out.println("0.종료");
+        
+        while(true) {
+            System.out.println("메뉴 번호>");
+            
+            String menu = keyIn.nextLine();
+            
+            switch(menu) {
+            case "1" :
+            case "2" :
+            case "3" :
+            case "0" :
+                return menu;
+            default : 
+                System.out.println("메뉴 번호가 유효하지 않습니다.");
+            }
+        }
+    }
+    
+    static void printMembers() {
+        for(int i = 0; i < index; i++) {
+            System.out.printf("%s, %s, %s \n", members[i].getName(), members[i].getEmail(), members[i].getPassword());                
+        }
+    }
     
     static void inputMembers() {
         while(true) {
@@ -57,19 +118,7 @@ public class App {
                 break;
             }
         }
-    }   //  inputMembers()
+    }
     
-    static void printMembers() {
-        for(int i = 0; i < index; i++) {
-            System.out.printf("%s, %s, %s \n", members[i].getName(), members[i].getEmail(), members[i].getPassword());                
-        }
-    }   //  printMembers
     
-    public static void main(String[] args) {
-        inputMembers();
-        
-        keyIn.close();
-        
-        printMembers();
-    }   //  main
 }
