@@ -4,7 +4,7 @@ import java.util.Scanner;
 import bitcamp.java110.cms.domain.Member;
 
 public class ManagerController {
-    static Manager[] managers = new Manager[100];
+    static Manager[] managers = new Manager[5];
     static int managerIndex = 0;
     public static Scanner keyIn;
     
@@ -35,6 +35,10 @@ public class ManagerController {
                 printManagers();
             }   else if(command.equals("add")){
                 inputManagers();
+            }   else if(command.equals("delete")) {
+                deleteManagers();
+            }   else if(command.equals("detail")) {
+                detailManager();
             }   else if(command.equals("quit")) {
                 break;
             }   else {
@@ -80,6 +84,10 @@ public class ManagerController {
             System.out.print("직위 : ");
             m.setPosition(keyIn.nextLine());
             
+            if (managerIndex == managers.length) {
+                increaseStorage();
+            }
+            
             managers[managerIndex++] = m;
             
             System.out.print("\nContinue? ( Y/n )");
@@ -88,6 +96,46 @@ public class ManagerController {
                 break;
             }
         }
+    }
+
+    private static void increaseStorage() {
+        Manager[] newList = new Manager[managers.length + 3];
+        for(int i = 0; i < managers.length; i++) {
+            newList[i] = managers[i];
+        }
+        managers = newList;
+        
+    }
+    
+    private static void deleteManagers() {
+        System.out.print("삭제할 번호?");
+        int no = Integer.parseInt(keyIn.nextLine());
+        
+        if(no < 0 || no >= managerIndex) {
+            System.out.println("무효한 번호입니다.");
+            return;
+        }
+        for (int i = no; i < managerIndex - 1; i++) {
+            managers[i] = managers[i + 1];
+        }
+        managerIndex--;
+        
+        System.out.println("삭제하였습니다.");
+    }
+
+    private static void detailManager() {
+        System.out.print("조회할 번호 : ");
+        int no = Integer.parseInt(keyIn.nextLine());
+        if(no < 0 || no >= managerIndex) {
+            System.out.println("무효한 번호입니다.");
+            return;
+        }
+        
+        System.out.printf("이름 : %s\n", managers[no].getName());
+        System.out.printf("이메일 : %s\n", managers[no].getEmail());
+        System.out.printf("암호 : %s\n", managers[no].getPassword());
+        System.out.printf("직위 : %s\n", managers[no].getPosition());
+        System.out.printf("전화 : %s\n", managers[no].getTel());
     }
 
 }
