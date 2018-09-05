@@ -138,4 +138,25 @@ public class ManagerController {
         System.out.printf("전화 : %s\n", managers[no].getTel());
     }
 
+    static{
+        Manager m = new Manager();
+        m.setName("a");
+        managers[managerIndex++] = m;
+        
+        m = new Manager();
+        m.setName("b");
+        managers[managerIndex++] = m;
+        
+        m = new Manager();
+        m.setName("c");
+        managers[managerIndex++] = m;
+        
+        m = new Manager();
+        m.setName("d");
+        managers[managerIndex++] = m;
+        
+        m = new Manager();
+        m.setName("e");
+        managers[managerIndex++] = m;
+    }
 }
