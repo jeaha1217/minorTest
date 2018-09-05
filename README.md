@@ -2,7 +2,7 @@
 
 비트캠프 자바 110기 복습 프로젝트
 
-## java110-project-01 minor-division
+## java110-project-01 minor-revision (Initial Commit)
 
 -   자바 프로젝트 디렉토리 구성하기
 
