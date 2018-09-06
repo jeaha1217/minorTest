@@ -1,5 +1,10 @@
 # java110-project minor-division
 
+## v0.9
+
+- 제네릭 활용법
+- ArrayList에 generic 활용하기
+
 ## v0.8
 
 - 목록을 다루는 클래스들을 리팩토링 하기.
