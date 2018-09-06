@@ -3,6 +3,11 @@ import java.util.Scanner;
 import bitcamp.java110.cms.control.ManagerController;
 import bitcamp.java110.cms.control.StudentController;
 import bitcamp.java110.cms.control.TeacherController;
+import bitcamp.java110.cms.domain.Manager;
+import bitcamp.java110.cms.domain.Student;
+import bitcamp.java110.cms.domain.Teacher;
+import bitcamp.java110.cms.util.ArrayList;
+import bitcamp.java110.cms.util.LinkedList;
 
 public class App {
     
@@ -10,10 +15,14 @@ public class App {
     
     public static void main(String[] args) {
         
-        StudentController sc = new StudentController(keyIn);
-        TeacherController tc = new TeacherController(keyIn);
-        ManagerController mc = new ManagerController(keyIn);
-        //  생성자에 keyIn을 넣어줌을 코도르르 더 짧게만듦.
+        StudentController sc = new StudentController(
+                keyIn, new LinkedList<Student>());
+        TeacherController tc = new TeacherController(
+                keyIn, new LinkedList<Teacher>());
+        ManagerController mc = new ManagerController(
+                keyIn, new ArrayList<Manager>());
+        //  생성자에 keyIn을 넣어줌을 코도를 더 짧게만듦.
+        //  Interface를 쓰면 유연성을 얻을 수 있다.
         
         while(true) {
             String menu = promptMenu();

@@ -1,18 +1,19 @@
 package bitcamp.java110.cms.control;
 import java.util.Scanner;
 
-import bitcamp.java110.cms.domain.Manager;
 import bitcamp.java110.cms.domain.Student;
-import bitcamp.java110.cms.util.LinkedList;
+import bitcamp.java110.cms.util.List;
 
 public class StudentController {
 
-    private LinkedList<Student> students = new LinkedList<>();
+    private List<Student> students;
     public Scanner keyIn;
     
-    public StudentController(Scanner keyIn) {
+    public StudentController(Scanner keyIn, List<Student> students) {
         this.keyIn = keyIn;
+        this.students = students;
         //  객체를 생성하기 위해 keyIn을 받아야 함을 강제함.
+        init();
     }
     
     public void seviceStudentMenu() {
@@ -115,7 +116,7 @@ public class StudentController {
         
     }
     
-    {   //  인스턴스 블럭. 와....
+    private void init(){   //  인스턴스 블럭. 와....
         Student m = new Student();
         m.setName("a");
         students.add(m);
