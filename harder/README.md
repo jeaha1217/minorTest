@@ -1,5 +1,10 @@
 # java110-project minor-division
 
+## v1.0
+
+- LinkedList 구동 원리 및 적용
+- LinkedList 만들기
+
 ## v0.9
 
 - 제네릭 활용법
