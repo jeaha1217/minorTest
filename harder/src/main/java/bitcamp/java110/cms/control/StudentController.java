@@ -1,6 +1,7 @@
 package bitcamp.java110.cms.control;
 import java.util.Scanner;
 
+import bitcamp.java110.cms.domain.Manager;
 import bitcamp.java110.cms.domain.Student;
 import bitcamp.java110.cms.util.LinkedList;
 
@@ -38,7 +39,7 @@ public class StudentController {
     private void printStudents() {
         for(int i = 0; i < students.size(); i++) {
             Student s = students.get(i);
-            System.out.printf("%s, %s, %s, %s, %b, %s \n",
+            System.out.printf("%s : %s, %s, %s, %s, %b, %s \n",
                     i,
                     s.getName(),
                     s.getEmail(),
@@ -103,15 +104,14 @@ public class StudentController {
             System.out.println("무효한 번호입니다.");
             return;
         }
-        
         Student student = students.get(no);
         
-        System.out.printf("이름 : ", student.getName());
-        System.out.printf("이메일 : ", student.getEmail());
-        System.out.printf("암호 : ", student.getPassword());
-        System.out.printf("최종학력 : ", student.getSchool());
-        System.out.printf("전화 : ", student.getTel());
-        System.out.printf("제직여부 : ", student.isWorking());
+        System.out.printf("이름 : %s\n", student.getName());
+        System.out.printf("이메일 : %s\n", student.getEmail());
+        System.out.printf("암호 : %s\n", student.getPassword());
+        System.out.printf("최종학력 : %s\n", student.getSchool());
+        System.out.printf("전화 : %s\n", student.getTel());
+        System.out.printf("제직여부 : %b\n", student.isWorking());
         
     }
     

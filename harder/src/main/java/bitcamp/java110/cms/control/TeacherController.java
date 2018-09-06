@@ -36,8 +36,8 @@ public class TeacherController {
 
     private void printTeachers() {
         for(int i = 0; i < teachers.size(); i++) {
-            Teacher t = new Teacher();
-            System.out.printf("%s, %s, %s, %s, %d, %s \n",
+            Teacher t = teachers.get(i);
+            System.out.printf("%d : %s, %s, %s, %s, %d, %s \n",
                     i,
                     t.getName(),
                     t.getEmail(),
@@ -109,7 +109,7 @@ public class TeacherController {
         System.out.printf("이메일 : %s\n", teacher.getEmail());
         System.out.printf("암호 : %s\n", teacher.getPassword());
         System.out.printf("전화 : %s\n", teacher.getTel());
-        System.out.printf("월급 : %s\n", teacher.getPay());
+        System.out.printf("급여 : %d\n", teacher.getPay());
         System.out.printf("과목 : %s\n", teacher.getSubject());
     }
 
