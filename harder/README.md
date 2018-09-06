@@ -1,5 +1,11 @@
 # java110-project minor-division
 
+## v1.2
+
+- 자바 컬렉션 API사용
+- 직접 제작한 List, ArrayList, LinkedList대신에 JAVA API에서 제공하는 Util을 사용한다.
+
+
 ## v1.1
 
 - 인터페이스 적용
