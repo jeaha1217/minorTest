@@ -15,24 +15,20 @@ public class App {
     
     public static void main(String[] args) {
         
-        StudentController sc = new StudentController(
-                keyIn, new LinkedList<Student>());
-        TeacherController tc = new TeacherController(
-                keyIn, new LinkedList<Teacher>());
-        ManagerController mc = new ManagerController(
-                keyIn, new ArrayList<Manager>());
-        //  생성자에 keyIn을 넣어줌을 코도를 더 짧게만듦.
-        //  Interface를 쓰면 유연성을 얻을 수 있다.
+        StudentController sc = new StudentController(new LinkedList<Student>());
+        TeacherController tc = new TeacherController(new LinkedList<Teacher>());
+        ManagerController mc = new ManagerController(new ArrayList<Manager>());
+        //  
         
         while(true) {
             String menu = promptMenu();
             
             if(menu.equals("1")) {
-                sc.seviceStudentMenu();
+                sc.service(keyIn);
             }   else if(menu.equals("2")){
-                tc.serviceTeacherMenu();
+                tc.service(keyIn);
             }   else if(menu.equals("3")){
-                mc.serviceManagerMenu();
+                mc.service(keyIn);
             }   else if(menu.equals("0")) {
                 System.out.println("Bye!");
                 break;

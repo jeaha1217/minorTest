@@ -4,18 +4,16 @@ import java.util.Scanner;
 
 import bitcamp.java110.cms.domain.Manager;
 
-public class ManagerController {
+public class ManagerController implements Control{
 
     private List<Manager> managers;
-    public Scanner keyIn;
     
-    public ManagerController(Scanner keyIn, List<Manager> managers) {
-        this.keyIn = keyIn;
+    public ManagerController(List<Manager> managers) {
         this.managers = managers;
         init();
     }
     
-    public void serviceManagerMenu() {
+    public void service(Scanner keyIn) {
         while(true) {
             System.out.println("매니저 관리>");
             String command = keyIn.nextLine();
@@ -23,11 +21,11 @@ public class ManagerController {
             if(command.equals("list")) {
                 printManagers();
             }   else if(command.equals("add")){
-                inputManagers();
+                inputManagers(keyIn);
             }   else if(command.equals("delete")) {
-                deleteManagers();
+                deleteManagers(keyIn);
             }   else if(command.equals("detail")) {
-                detailManager();
+                detailManager(keyIn);
             }   else if(command.equals("quit")) {
                 break;
             }   else {
@@ -50,7 +48,7 @@ public class ManagerController {
         }
     }
     
-    private void inputManagers() {
+    private void inputManagers(Scanner keyIn) {
         while(true) {
             Manager m = new Manager();
             
@@ -79,7 +77,7 @@ public class ManagerController {
         }
     }
     
-    private void deleteManagers() {
+    private void deleteManagers(Scanner keyIn) {
         System.out.print("삭제할 번호?");
         int no = Integer.parseInt(keyIn.nextLine());
         
@@ -93,7 +91,7 @@ public class ManagerController {
         System.out.println("삭제하였습니다.");
     }
 
-    private void detailManager() {
+    private void detailManager(Scanner keyIn) {
         System.out.print("조회할 번호 : ");
         int no = Integer.parseInt(keyIn.nextLine());
         if(no < 0 || no >= managers.size()) {

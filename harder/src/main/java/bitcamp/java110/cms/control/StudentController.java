@@ -4,19 +4,17 @@ import java.util.Scanner;
 
 import bitcamp.java110.cms.domain.Student;
 
-public class StudentController {
+public class StudentController implements Control{
 
     private List<Student> students;
     public Scanner keyIn;
     
-    public StudentController(Scanner keyIn, List<Student> students) {
-        this.keyIn = keyIn;
+    public StudentController(List<Student> students) {
         this.students = students;
-        //  객체를 생성하기 위해 keyIn을 받아야 함을 강제함.
         init();
     }
     
-    public void seviceStudentMenu() {
+    public void service(Scanner keyIn) {
         while(true) {
             System.out.println("학생관리>");
             String command = keyIn.nextLine();
@@ -24,11 +22,11 @@ public class StudentController {
             if(command.equals("list")) {
                 printStudents();
             }   else if(command.equals("add")){
-                inputStudents();
+                inputStudents(keyIn);
             }   else if(command.equals("delete")) {
-                deleteStudents();
+                deleteStudents(keyIn);
             }   else if(command.equals("detail")) {
-                detailStudent();
+                detailStudent(keyIn);
             }   else if(command.equals("quit")) {
                 break;
             }   else {
@@ -52,7 +50,7 @@ public class StudentController {
         }
     }
     
-    private void inputStudents() {
+    private void inputStudents(Scanner keyIn) {
         while(true) {
             Student m = new Student();
             
@@ -84,7 +82,7 @@ public class StudentController {
         }
     }
     
-    private void deleteStudents() {
+    private void deleteStudents(Scanner keyIn) {
         System.out.print("삭제할 번호 : ");
         int no = Integer.parseInt(keyIn.nextLine());
         
@@ -98,7 +96,7 @@ public class StudentController {
     }
     
 
-    private void detailStudent() {
+    private void detailStudent(Scanner keyIn) {
         System.out.print("조회할 번호 : ");
         int no = Integer.parseInt(keyIn.nextLine());
         if(no < 0 || no >= students.size()) {
@@ -112,11 +110,11 @@ public class StudentController {
         System.out.printf("암호 : %s\n", student.getPassword());
         System.out.printf("최종학력 : %s\n", student.getSchool());
         System.out.printf("전화 : %s\n", student.getTel());
-        System.out.printf("제직여부 : %b\n", student.isWorking());
+        System.out.printf("재직여부 : %b\n", student.isWorking());
         
     }
     
-    private void init(){   //  인스턴스 블럭. 와....
+    private void init(){
         Student m = new Student();
         m.setName("a");
         students.add(m);
