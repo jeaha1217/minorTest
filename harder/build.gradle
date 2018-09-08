@@ -7,10 +7,15 @@ plugins {
 mainClassName = 'App'
 
 dependencies {
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.4.6'
+    //  프로젝트에서 사용할 라이브러리 설정
+    //  => 라이브러리 정보는 mvnrepository.com에서 검색하여 가져온다.
+    //  프로젝트 디렉토리에서 gradle eclipse 로 설정 다시 잡아준후,
+    //  이클립스에서 리프레쉬, Referenced Libraries에서 mybatis-버젼.jar가 잡혀야 함.
     compile 'com.google.guava:guava:23.0'
     testCompile 'junit:junit:4.12'
 }
 
 repositories {
-    mavenCentral()
+    mavenCentral() //https://repo.maven.apache.org/maven2/
 }
