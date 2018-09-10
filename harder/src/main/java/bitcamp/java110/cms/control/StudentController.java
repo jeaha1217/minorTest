@@ -4,17 +4,18 @@ import java.util.List;
 import java.util.Scanner;
 
 import bitcamp.java110.cms.annotaion.Component;
+import bitcamp.java110.cms.annotaion.RequestMapping;
 import bitcamp.java110.cms.domain.Student;
 
-@Component("1")
-public class StudentController implements Controller{
+@Component("student")
+public class StudentController{
     
     private List<Student> students = new ArrayList<>();
     public StudentController() {
         init();
     }
-
-    public void service(Scanner keyIn) {
+    @RequestMapping
+    public void student(Scanner keyIn) {
         while(true) {
             System.out.println("학생관리>");
             String command = keyIn.nextLine();
@@ -46,7 +47,7 @@ public class StudentController implements Controller{
                     s.getSchool(),
                     s.isWorking(),
                     s.getTel()
-                    );                
+                    );
         }
     }
     

@@ -4,17 +4,18 @@ import java.util.List;
 import java.util.Scanner;
 
 import bitcamp.java110.cms.annotaion.Component;
+import bitcamp.java110.cms.annotaion.RequestMapping;
 import bitcamp.java110.cms.domain.Teacher;
 
-@Component("2")
-public class TeacherController implements Controller{
+@Component("teacher")
+public class TeacherController{
 
     private List<Teacher> teachers = new LinkedList<>();
     public TeacherController() {
         init();
     }
-
-    public void service(Scanner keyIn) {
+    @RequestMapping
+    public void teacher(Scanner keyIn) {
         while(true) {
             System.out.println("강사관리>");
             String command = keyIn.nextLine();
