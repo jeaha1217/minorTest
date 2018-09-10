@@ -11,6 +11,7 @@ public class App {
     ApplicationContext에서 객체를 저장.
     RequestMappingHandlerMapping 객체의 명령어를 저장함.
     @RequestMapping 얘를 key값으로 메소드를 불러옴ㅇㅇ 시발 어렵네.
+    다시한번 찬찬히 해석해 볼것.
 */
     
     static Scanner keyIn = new Scanner(System.in);
