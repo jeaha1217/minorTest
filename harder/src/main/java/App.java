@@ -9,7 +9,8 @@ public class App {
     RequestMapping을 통해 메소드 호출.
     
     Component와 RequestMapping 두개의 어노테이션으로 객체를 생성,
-    student, teacher, manager 메소드 이름을 호출해서 메소드를 실행시킴. 
+    Componenet 어노테이션 student, teacher, manager으로 클래스를 호출해서
+    RequestMapping 메소드를 실행시킴. 
 */
     
     static Scanner keyIn = new Scanner(System.in);
