@@ -40,7 +40,6 @@ public class RequestMappingHandlerMapping {
             this.method = method;
         }
         
-        //  needOnlyProperty.
         public Object getInstance() {
             return instance;
         }
@@ -49,8 +48,3 @@ public class RequestMappingHandlerMapping {
         }
     }
 }
-/*
-    모바일에서 무지막지하게 쓰인다고.
-    InnerClass static이 붙지 않은 클래스. 클래스 내에서만 씀.
-    NestedClass static이 붙은놈.
-*/ 

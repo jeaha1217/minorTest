@@ -24,6 +24,4 @@ RUNTIME : 컴파일 한 후에도 .class파일에 남겨둔다. 실행할 때도
  @Retention(RetentionPolicy.RUNTIME) 
 public @interface Component {
     String value() default "";
-    //  field형식의 이름을 가진 property임?
-    //  default ""; 를 붙이면 또 달라짐.
 }

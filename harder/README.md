@@ -1,5 +1,10 @@
 # java110-project minor-division
 
+## v1.6
+
+- Command 디자인 패턴 적용
+- 컨트롤러 구조 변경
+
 ## v1.5
 
 - 리플렉션 API 활용 II
