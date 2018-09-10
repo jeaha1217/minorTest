@@ -7,10 +7,16 @@ import bitcamp.java110.cms.context.RequestMappingHandlerMapping.RequestMappingHa
 public class App {
 /*  Annotation활용.
     RequestMapping을 통해 메소드 호출.
-    
+
+    v1.4.1
+    Component와 RequestMapping 두개의 어노테이션으로 객체를 생성,
+    Component 어노테이션 student, teacher, manager으로 클래스를 호출해서
+    RequestMapping 메소드를 실행시킴. 
+	v1.5
     ApplicationContext에서 객체를 저장.
     RequestMappingHandlerMapping 객체의 명령어를 저장함.
     @RequestMapping 얘를 key값으로 메소드를 불러옴ㅇㅇ 시발 어렵네.
+
 */
     
     static Scanner keyIn = new Scanner(System.in);
