@@ -1,23 +1,20 @@
+package bitcamp.java110.cms;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import bitcamp.java110.cms.context.ApplicationContext;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping.RequestMappingHandler;
+import bitcamp.java110.cms.domain.Student;
 
 public class App {
-/*  Annotation활용.
-    RequestMapping을 통해 메소드 호출.
-
-
-	v1.5
-    ApplicationContext에서 객체를 저장.
-    RequestMappingHandlerMapping 객체의 명령어를 저장함.
-    @RequestMapping 얘를 key값으로 메소드를 불러옴ㅇㅇ 시발 어렵네.
-
-    다시한번 찬찬히 해석해 볼것.
+/*  
+    
 */
     
     static Scanner keyIn = new Scanner(System.in);
+    
+    public static ArrayList<Student> students = new ArrayList<>();
     
     public static void main(String[] args) throws Exception {
         ApplicationContext iocContainer = 
@@ -50,12 +47,7 @@ public class App {
                 System.out.println("해당 메뉴가 없습니다.");
                 continue;
             }
-//            Method method = mapping.getMethod();
-//            method.invoke(mapping.getInstance(), keyIn);
-            
             mapping.getMethod().invoke(mapping.getInstance(), keyIn);
-            //  한줄로 만들 수 있음. 익숙해 지는게 좋음.
-            
         }
         keyIn.close();
     }

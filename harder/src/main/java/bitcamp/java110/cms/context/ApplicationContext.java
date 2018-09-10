@@ -67,10 +67,6 @@ public class ApplicationContext {
     public String[] getBeanDefinitionNames() {
         Set<String> keySet = objPool.keySet();
         String[] names = new String[keySet.size()];
-//        keySet.toArray(names);
-//        return names;
-        //  한줄로 압축하기.
         return keySet.toArray(names);
-        //  
     }
 }
