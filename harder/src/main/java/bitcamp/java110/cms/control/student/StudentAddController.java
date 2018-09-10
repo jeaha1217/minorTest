@@ -13,27 +13,27 @@ public class StudentAddController {
     @RequestMapping("student/add")
     public void add(Scanner keyIn) {
         while(true) {
-            Student m = new Student();
+            Student s = new Student();
             
             System.out.print("이름 : ");
-            m.setName(keyIn.nextLine());
+            s.setName(keyIn.nextLine());
             
             System.out.print("이메일 : ");
-            m.setEmail(keyIn.nextLine());
+            s.setEmail(keyIn.nextLine());
             
             System.out.print("암호 : ");
-            m.setPassword(keyIn.nextLine());
+            s.setPassword(keyIn.nextLine());
             
             System.out.print("최종학력 : ");
-            m.setSchool(keyIn.nextLine());
+            s.setSchool(keyIn.nextLine());
             
             System.out.print("재직 여부 : ");
-            m.setWorking(Boolean.parseBoolean(keyIn.nextLine()));
+            s.setWorking(Boolean.parseBoolean(keyIn.nextLine()));
             
             System.out.print("전화 : ");
-            m.setTel(keyIn.nextLine());
+            s.setTel(keyIn.nextLine());
             
-            App.students.add(m);
+            App.students.add(s);
             
             System.out.print("\nContinue? ( Y/n )");
             String answer = keyIn.nextLine();
