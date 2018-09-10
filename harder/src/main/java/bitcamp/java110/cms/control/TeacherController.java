@@ -7,14 +7,14 @@ import bitcamp.java110.cms.annotaion.Component;
 import bitcamp.java110.cms.annotaion.RequestMapping;
 import bitcamp.java110.cms.domain.Teacher;
 
-@Component("teacher")
+@Component
 public class TeacherController{
 
     private List<Teacher> teachers = new LinkedList<>();
     public TeacherController() {
         init();
     }
-    @RequestMapping
+    @RequestMapping("teacher")
     public void teacher(Scanner keyIn) {
         while(true) {
             System.out.println("강사관리>");

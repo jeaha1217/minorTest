@@ -3,6 +3,7 @@ package bitcamp.java110.cms.context;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
+import java.util.Set;
 
 import org.apache.ibatis.io.Resources;
 
@@ -42,15 +43,16 @@ public class ApplicationContext {
                     
                     //  => 클래스에서 component annotation을 추출한다.
                     Component anno = clazz.getAnnotation(Component.class);
-/*
-                  !!자바에서 컴파일러가 자동으로 .class라는 변수를 생성함!!
-클래스의 정보를 담고있는 변수임.
-String을 다루는 클래스 String, Integer를 다루는 클래스 Integer, 클래스를 다루는 클래스 class
-자바에서 모든 파일은 .class임 (interface, abstract class 뭐든 다 class)임.
-*/
                     
-                    //  어노테이션 value값으로 인스턴스 objPool에 저장한다.
-                    objPool.put(anno.value(), instance);
+                    //  =>  Component 애노테이션에 value가 있으면 그값으로 객체를 저장.
+                    //  ->  없다면 클래스 이름으로 객체를 저장.
+                    if(anno.value().length() > 0 ) {
+                    //  =>  Component 애노테이션 value값으로 인스턴를 objPool에 저장한다.
+                        objPool.put(anno.value(), instance);
+                    }   else {
+                    //  =>  클래스 이름으로 객체를 저장.
+                        objPool.put(clazz.getName(), instance);
+                    }
                     
                 }   catch (Exception e) {
                     e.printStackTrace();
@@ -60,5 +62,15 @@ String을 다루는 클래스 String, Integer를 다루는 클래스 Integer, �
     }
     public Object getBean(String name) {
         return objPool.get(name);
+    }
+    
+    public String[] getBeanDefinitionNames() {
+        Set<String> keySet = objPool.keySet();
+        String[] names = new String[keySet.size()];
+//        keySet.toArray(names);
+//        return names;
+        //  한줄로 압축하기.
+        return keySet.toArray(names);
+        //  
     }
 }

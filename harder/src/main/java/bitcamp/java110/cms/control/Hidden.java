@@ -5,9 +5,9 @@ import java.util.Scanner;
 import bitcamp.java110.cms.annotaion.Component;
 import bitcamp.java110.cms.annotaion.RequestMapping;
 
-@Component("hidden")
+@Component
 public class Hidden{
-    @RequestMapping
+    @RequestMapping("hidden")
     public void hidden(Scanner keyIn) {
         System.out.println("Ah?");
         System.out.println("Fuck You");
