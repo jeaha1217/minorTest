@@ -26,9 +26,7 @@ public class App {
                 System.out.println("해당 메뉴가 없습니다.");
             }
         }
-        
         keyIn.close();
-        
     }
 
     private static String promptMenu() {
