@@ -16,7 +16,7 @@ public class TeacherAddController {
             Teacher t = new Teacher();
             
             System.out.print("이름 : ");
-            t.setName(keyIn.nextLine());
+            t.setEmail(keyIn.nextLine());
             
             System.out.print("이메일 : ");
             t.setEmail(keyIn.nextLine());
@@ -33,7 +33,11 @@ public class TeacherAddController {
             System.out.print("강의 과목 (예: 자바, C, C++) : ");
             t.setSubject(keyIn.nextLine());
             
-            App.teachers.add(t);
+            if(App.teacherDao.insert(t) > 0) {
+                System.out.println("저장하였습니다.");
+            }   else {
+                System.out.println("같은 이메일의 강사가 존재 합니다.");
+            }
             
             System.out.print("\nContinue? ( Y/n )");
             String answer = keyIn.nextLine();
@@ -44,24 +48,24 @@ public class TeacherAddController {
     }
     
     {
-        Teacher m = new Teacher();
-        m.setName("a");
-        App.teachers.add(m);
+        Teacher t = new Teacher();
+        t.setEmail("a");
+        App.teacherDao.insert(t);
         
-        m = new Teacher();
-        m.setName("b");
-        App.teachers.add(m);
+        t = new Teacher();
+        t.setEmail("b");
+        App.teacherDao.insert(t);
         
-        m = new Teacher();
-        m.setName("c");
-        App.teachers.add(m);
+        t = new Teacher();
+        t.setEmail("c");
+        App.teacherDao.insert(t);
         
-        m = new Teacher();
-        m.setName("d");
-        App.teachers.add(m);
+        t = new Teacher();
+        t.setEmail("d");
+        App.teacherDao.insert(t);
         
-        m = new Teacher();
-        m.setName("e");
-        App.teachers.add(m);
+        t = new Teacher();
+        t.setEmail("e");
+        App.teacherDao.insert(t);
     }
 }

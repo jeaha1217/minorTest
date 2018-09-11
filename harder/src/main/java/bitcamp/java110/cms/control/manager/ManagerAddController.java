@@ -16,7 +16,7 @@ public class ManagerAddController {
             Manager m = new Manager();
             
             System.out.print("이름 : ");
-            m.setName(keyIn.nextLine());
+            m.setEmail(keyIn.nextLine());
             
             System.out.print("이메일 : ");
             m.setEmail(keyIn.nextLine());
@@ -30,7 +30,11 @@ public class ManagerAddController {
             System.out.print("직위 : ");
             m.setPosition(keyIn.nextLine());
             
-            App.managers.add(m);
+            if(App.managerDao.insert(m) > 0) {
+                System.out.println("저장하였습니다.");
+            }   else {
+                System.out.println("같은 이메일의 매니져가 존재 합니다.");
+            }
             
             System.out.print("\nContinue? ( Y/n )");
             String answer = keyIn.nextLine();
@@ -42,23 +46,23 @@ public class ManagerAddController {
     
     {
         Manager m = new Manager();
-        m.setName("a");
-        App.managers.add(m);
+        m.setEmail("a");
+        App.managerDao.insert(m);
         
         m = new Manager();
-        m.setName("b");
-        App.managers.add(m);
+        m.setEmail("b");
+        App.managerDao.insert(m);
         
         m = new Manager();
-        m.setName("c");
-        App.managers.add(m);
+        m.setEmail("c");
+        App.managerDao.insert(m);
         
         m = new Manager();
-        m.setName("d");
-        App.managers.add(m);
+        m.setEmail("d");
+        App.managerDao.insert(m);
         
         m = new Manager();
-        m.setName("e");
-        App.managers.add(m);
+        m.setEmail("e");
+        App.managerDao.insert(m);
     }
 }
