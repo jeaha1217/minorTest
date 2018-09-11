@@ -2,14 +2,21 @@ package bitcamp.java110.cms.control.teacher;
 
 import java.util.Scanner;
 
-import bitcamp.java110.cms.App;
+import bitcamp.java110.cms.annotaion.Autowired;
 import bitcamp.java110.cms.annotaion.Component;
 import bitcamp.java110.cms.annotaion.RequestMapping;
+import bitcamp.java110.cms.dao.TeacherDao;
 import bitcamp.java110.cms.domain.Teacher;
 
 @Component
 public class TeacherAddController {
+    TeacherDao teacherDao;
     
+    @Autowired
+    public void setTeacherDao(TeacherDao teacherDao) {
+        this.teacherDao = teacherDao;
+    }
+        
     @RequestMapping("teacher/add")
     public void add(Scanner keyIn) {
         while(true) {
@@ -33,7 +40,7 @@ public class TeacherAddController {
             System.out.print("강의 과목 (예: 자바, C, C++) : ");
             t.setSubject(keyIn.nextLine());
             
-            if(App.teacherDao.insert(t) > 0) {
+            if(teacherDao.insert(t) > 0) {
                 System.out.println("저장하였습니다.");
             }   else {
                 System.out.println("같은 이메일의 강사가 존재 합니다.");
@@ -45,27 +52,5 @@ public class TeacherAddController {
                 break;
             }
         }
-    }
-    
-    {
-        Teacher t = new Teacher();
-        t.setEmail("a");
-        App.teacherDao.insert(t);
-        
-        t = new Teacher();
-        t.setEmail("b");
-        App.teacherDao.insert(t);
-        
-        t = new Teacher();
-        t.setEmail("c");
-        App.teacherDao.insert(t);
-        
-        t = new Teacher();
-        t.setEmail("d");
-        App.teacherDao.insert(t);
-        
-        t = new Teacher();
-        t.setEmail("e");
-        App.teacherDao.insert(t);
     }
 }

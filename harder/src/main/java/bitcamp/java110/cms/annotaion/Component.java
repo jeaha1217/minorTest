@@ -1,7 +1,9 @@
 package bitcamp.java110.cms.annotaion;
 
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /*  일반 주석은 컴파일 하게되면 날아가버림
     클래스 고유의 정보는 아니지만 클래스를 관리 or 설명 할 주석이 필요해짐.
@@ -20,6 +22,7 @@ RUNTIME : 컴파일 한 후에도 .class파일에 남겨둔다. 실행할 때도
 */
   
 //    Retention에 value속성 하나만 넣을때에는 value는 생략 가능하다.
+@Target(ElementType.TYPE)
 //@Retention(value = RetentionPolicy.SOURCE)
  @Retention(RetentionPolicy.RUNTIME) 
 public @interface Component {
