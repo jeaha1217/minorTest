@@ -2,7 +2,6 @@ package bitcamp.java110.cms.context;
 
 import java.io.File;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -11,7 +10,6 @@ import java.util.Set;
 
 import org.apache.ibatis.io.Resources;
 
-import bitcamp.java110.cms.annotaion.Autowired;
 import bitcamp.java110.cms.annotaion.Component;
 
 
@@ -44,7 +42,9 @@ public class ApplicationContext {
         // 그 객체를 실행한다.
         AutowiredAnnotationBeanPostProcessor processor = 
                 new AutowiredAnnotationBeanPostProcessor();
-        processor.postProcess(this);        
+        processor.postProcess(this);
+        
+        callBeanPostProcessor();
     }
     
     // objPool에 보관된 객체를 이름으로 찾아 리턴한다.
@@ -127,7 +127,6 @@ public class ApplicationContext {
         }
     }
     
-    /*
     private void callBeanPostProcessor() {
         Collection<Object> objList = objPool.values();
         
@@ -140,5 +139,4 @@ public class ApplicationContext {
             processor.postProcess(this);
         }
     }
-    */
 }
