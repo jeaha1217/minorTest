@@ -23,7 +23,7 @@ public class TeacherAddController {
             Teacher t = new Teacher();
             
             System.out.print("이름 : ");
-            t.setEmail(keyIn.nextLine());
+            t.setName(keyIn.nextLine());
             
             System.out.print("이메일 : ");
             t.setEmail(keyIn.nextLine());
