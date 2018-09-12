@@ -23,7 +23,7 @@ public class StudentAddController {
             Student s = new Student();
             
             System.out.print("이름 : ");
-            s.setEmail(keyIn.nextLine());
+            s.setName(keyIn.nextLine());
             
             System.out.print("이메일 : ");
             s.setEmail(keyIn.nextLine());

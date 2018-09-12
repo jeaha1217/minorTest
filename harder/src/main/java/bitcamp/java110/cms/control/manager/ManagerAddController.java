@@ -23,7 +23,7 @@ public class ManagerAddController {
             Manager m = new Manager();
             
             System.out.print("이름 : ");
-            m.setEmail(keyIn.nextLine());
+            m.setName(keyIn.nextLine());
             
             System.out.print("이메일 : ");
             m.setEmail(keyIn.nextLine());
@@ -37,13 +37,18 @@ public class ManagerAddController {
             System.out.print("직위 : ");
             m.setPosition(keyIn.nextLine());
             
-            if(managerDao.insert(m) > 0) {
+            int rtval = 0;
+            if((rtval = managerDao.insert(m)) > 0) {
                 System.out.println("저장하였습니다.");
-            }   else {
+            }   else if(rtval == -1) {
+                System.out.println("필수 입력 항목이 비었습니다.");
+            }   else if(rtval == -2) {
                 System.out.println("같은 이메일의 매니져가 존재 합니다.");
+            }   else {
+                System.out.println("예기치 않은 오류가 발생했습니다.");
             }
             
-            System.out.print("\nContinue? ( Y/n )");
+            System.out.println("\nContinue? ( Y/n )");
             String answer = keyIn.nextLine();
             if(answer.toLowerCase().equals("n")) {
                 break;
