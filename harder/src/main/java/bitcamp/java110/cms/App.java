@@ -7,11 +7,7 @@ import bitcamp.java110.cms.context.RequestMappingHandlerMapping.RequestMappingHa
 
 public class App {
 /*
-    Controller들이 App에 의존 되어 있음,  
-        ApplicationContext
-            -   객체 생성.
-            -   의존 객체를 주입해주는 역할.(Dependency Injection)
-            IoC EventController 실행을 역행, DI의 한 예.
+    
 */
 
     static Scanner keyIn = new Scanner(System.in);
