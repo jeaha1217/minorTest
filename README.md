@@ -2,6 +2,20 @@
 
 비트캠프 자바 110기 복습 프로젝트
 
+## v2.2
+
+- 예외 처리 적용
+
+## v2.1
+
+- 객체 Serialize / Deserialixe 적용
+- java.io.Serializable 인터페이스 적용
+- transient modifier 사용법
+
+## v2.0.2
+
+- 인터페이스와 구형체를 별도의 패키지로 분리하기
+
 ## v2.0
 - DAO에 파일 입출력 도입
 - DAO에 인터페이스 적용

@@ -1,5 +1,9 @@
 # java110-project minor-division
 
+## v2.1
+
+- 인터페이스와 구형체를 별도의 패키지로 분리하기
+
 ## v2.0
 - DAO에 파일 입출력 도입
 - DAO에 인터페이스 적용
