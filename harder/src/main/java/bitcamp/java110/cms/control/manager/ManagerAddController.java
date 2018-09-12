@@ -5,7 +5,9 @@ import java.util.Scanner;
 import bitcamp.java110.cms.annotaion.Autowired;
 import bitcamp.java110.cms.annotaion.Component;
 import bitcamp.java110.cms.annotaion.RequestMapping;
+import bitcamp.java110.cms.dao.DuplicationDaoException;
 import bitcamp.java110.cms.dao.ManagerDao;
+import bitcamp.java110.cms.dao.MandatoryValueDaoExcecption;
 import bitcamp.java110.cms.domain.Manager;
 
 @Component
@@ -37,17 +39,25 @@ public class ManagerAddController {
             System.out.print("직위 : ");
             m.setPosition(keyIn.nextLine());
             
-            int rtval = 0;
-            if((rtval = managerDao.insert(m)) > 0) {
-                System.out.println("저장하였습니다.");
-            }   else if(rtval == -1) {
-                System.out.println("필수 입력 항목이 비었습니다.");
-            }   else if(rtval == -2) {
-                System.out.println("같은 이메일의 매니져가 존재 합니다.");
-            }   else {
-                System.out.println("예기치 않은 오류가 발생했습니다.");
+            try {
+                managerDao.insert(m);
+            }   catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-            
+/*            
+            두가지 방법 사용 가능. Dao.insert() 단에서 잘 처리했다면 위에 방법으로 하면 됨.
+            어쨌거나 예외 처리는 확실하게 해야함.
+            try {
+                managerDao.insert(m);
+                System.out.println("저장했습니다.");
+            }   catch (MandatoryValueDaoExcecption ex) {
+                System.out.println(ex);
+                System.out.println("필수 값 누락 오류!");
+            }   catch (DuplicationDaoException ex) {
+                System.out.println(ex);
+                System.out.println("이메일 중복 오류!");
+            }
+*/            
             System.out.println("\nContinue? ( Y/n )");
             String answer = keyIn.nextLine();
             if(answer.toLowerCase().equals("n")) {

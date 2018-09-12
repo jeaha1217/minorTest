@@ -9,7 +9,6 @@ public class App {
 /*
     
 */
-
     static Scanner keyIn = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
@@ -45,11 +44,16 @@ public class App {
                 System.out.println("해당 메뉴가 없습니다.");
                 continue;
             }
-            mapping.getMethod().invoke(mapping.getInstance(), keyIn);
+            
+            try {
+                mapping.getMethod().invoke(mapping.getInstance(), keyIn);
+            }   catch(Exception e) {
+                System.out.println(e);
+                System.out.println(e.getCause());
+            }
         }
         keyIn.close();
     }
-
     private static String prompt() {
         System.out.print("\n메뉴> ");
         String menu = keyIn.nextLine();

@@ -40,13 +40,11 @@ public class StudentAddController {
             System.out.print("전화 : ");
             s.setTel(keyIn.nextLine());
             
-            if(studentDao.insert(s) > 0) {
-                System.out.println("저장하였습니다.");
-            }   else {
-                System.out.println("같은 이메일의 학생이 존재 합니다.");
+            try {
+                studentDao.insert(s);
+            }   catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-            
-            
             
             System.out.print("\nContinue? ( Y/n )");
             String answer = keyIn.nextLine();

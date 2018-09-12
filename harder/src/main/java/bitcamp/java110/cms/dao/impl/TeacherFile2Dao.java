@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bitcamp.java110.cms.annotaion.Component;
+import bitcamp.java110.cms.dao.DuplicationDaoException;
+import bitcamp.java110.cms.dao.MandatoryValueDaoExcecption;
 import bitcamp.java110.cms.dao.TeacherDao;
 import bitcamp.java110.cms.domain.Teacher;
 
@@ -58,16 +60,22 @@ public class TeacherFile2Dao implements TeacherDao{
         }
     }
     
-    public int insert(Teacher teacher) {
-        for (Teacher item : list) {
-            if (item.getEmail().equals(teacher.getEmail())) {
-                return 0;
+    public int insert(Teacher teacher) throws MandatoryValueDaoExcecption, DuplicationDaoException{
+        if (teacher.getName().length() == 0 ||
+                teacher.getEmail().length() == 0 ||
+                teacher.getPassword().length() == 0) {
+                throw new MandatoryValueDaoExcecption("필수 값 누락 오류!");
             }
+            for(Teacher item : list) {
+                if(item.getEmail().equals(teacher.getEmail())) {
+                    throw new DuplicationDaoException("이메일 중복 오류!");
+                }
+            }
+            list.add(teacher);
+            save();
+            System.out.println("저장했습니다.");
+            return 1;
         }
-        list.add(teacher);
-        save();
-        return 1;
-    }
 
     public List<Teacher> findAll() {
         return list;

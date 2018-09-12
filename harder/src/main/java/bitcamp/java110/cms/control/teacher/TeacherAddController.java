@@ -35,15 +35,18 @@ public class TeacherAddController {
             t.setTel(keyIn.nextLine());
             
             System.out.print("급여 : ");
-            t.setPay(Integer.parseInt(keyIn.nextLine()));
-            
+            try {
+                t.setPay(Integer.parseInt(keyIn.nextLine()));
+            }   catch(Exception e) {
+                System.out.println("\n!!급여항목 입력 오류!!\n");
+            }
             System.out.print("강의 과목 (예: 자바, C, C++) : ");
             t.setSubject(keyIn.nextLine());
             
-            if(teacherDao.insert(t) > 0) {
-                System.out.println("저장하였습니다.");
-            }   else {
-                System.out.println("같은 이메일의 강사가 존재 합니다.");
+            try {
+                teacherDao.insert(t);
+            }   catch (Exception e) {
+                System.out.println(e.getMessage());
             }
             
             System.out.print("\nContinue? ( Y/n )");

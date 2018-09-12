@@ -11,11 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bitcamp.java110.cms.annotaion.Component;
+import bitcamp.java110.cms.dao.DuplicationDaoException;
 import bitcamp.java110.cms.dao.ManagerDao;
+import bitcamp.java110.cms.dao.MandatoryValueDaoExcecption;
 import bitcamp.java110.cms.domain.Manager;
 
 @Component
-public class ManagerFile2Dao implements ManagerDao{
+public class ManagerFile2Dao implements ManagerDao {
     static String defaultFileName = "data/manager2.dat";
     String fileName;
     
@@ -57,22 +59,24 @@ public class ManagerFile2Dao implements ManagerDao{
             e.printStackTrace();
         }
     }
-    //  예외 처리 문법이 없던 시절에는 리턴 값으로 예외 상황을 호출자에게 알렸음.
-    public int insert(Manager manager) {
+    
+    public int insert(Manager manager) throws MandatoryValueDaoExcecption, DuplicationDaoException {
         //  필수 항목이 비었을 때.
         if (manager.getName().length() == 0 ||
             manager.getEmail().length() == 0 ||
             manager.getPassword().length() == 0) {
-            return -1;
+            //  호출자에게 예외 정보를 만들어 던진다.
+            throw new MandatoryValueDaoExcecption("필수 값 누락 오류!");
         }
-        //  같은 이메일 주소가 있을 경우.
+        //  호출자에게 예외 정보를 만들어 던진다.
         for(Manager item : list) {
             if(item.getEmail().equals(manager.getEmail())) {
-                return -2;
+                throw new DuplicationDaoException("이메일 중복 오류!");
             }
         }
         list.add(manager);
         save();
+        System.out.println("저장했습니다.");
         return 1;
     }
     
@@ -100,3 +104,10 @@ public class ManagerFile2Dao implements ManagerDao{
         return 0;
     }
 }
+/*  Throwable
+Exception   :   개발자가 처리해야할 문제.
+Error       :   시스템(JVM) 에러. 받아서 처리할 생각 절대 ㄴ
+두가지로 받을수 있음.
+
+Exception을 상속 받은 daoException을 사용함.
+*/
