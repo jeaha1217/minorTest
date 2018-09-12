@@ -12,30 +12,14 @@ import bitcamp.java110.cms.annotaion.Component;
 import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.domain.Student;
 
-@Component
+//@Component
 public class StudentFileDao implements StudentDao{
     
     private List<Student> list = new ArrayList<>();
     
     public StudentFileDao() {
-        /*
-        BufferedReader in;
-        try {
-//            File dataFile = new File("data/student.dat");
-//            FileReader fr = new FileReader(dataFile);
-//            BufferedReader br = new BufferedReader(fr);
-            in = new BufferedReader(new FileReader("data/student.dat"));
-            //  106기에 만드는것 있음.
-            
-            
-        }   catch(Exception e) {
-            e.printStackTrace();
-        }   finally {
-            try { in.close(); } catch (Exception e) {    }
-        }
-*/        
         File dataFile = new File("data/student.dat");
-        try (   //  autoClose
+        try (
             BufferedReader in = new BufferedReader(new FileReader(dataFile))
         ){
             while(true) {
@@ -75,7 +59,7 @@ public class StudentFileDao implements StudentDao{
                         s.isWorking()
                         ));
             }
-            out.flush();    //  버퍼에서 출력 하라.
+            out.flush();
         }   catch(Exception e) {
             e.printStackTrace();
         }
@@ -86,7 +70,7 @@ public class StudentFileDao implements StudentDao{
             if(item.getEmail().equals(student.getEmail())) {
                 return 0;
             }
-        }   //  중복검사.
+        }
         list.add(student);
         save();
         return 1;

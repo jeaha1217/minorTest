@@ -8,7 +8,8 @@ public class Member implements Serializable{
     
     protected String name;
     protected String email;
-    protected String password;
+    protected transient String password;
+    //  transient 필드. serialize 대상에서 제외.
     
     public String getName() {
         return name;
