@@ -5,12 +5,14 @@ import java.io.Serializable;
 public class Member implements Serializable{
     private static final long serialVersionUID = 1L;
     //  
-    
+    protected int no;
     protected String name;
     protected String email;
-    protected transient String password;
-    //  transient 필드. serialize 대상에서 제외.
+    protected String password;
     
+    public int getNo() {
+        return no;
+    }
     public String getName() {
         return name;
     }
@@ -19,6 +21,9 @@ public class Member implements Serializable{
     }
     public String getPassword() {
         return password;
+    }
+    public void setNo(int no) {
+        this.no = no;
     }
     public void setName(String name) {
         this.name = name;
@@ -29,4 +34,5 @@ public class Member implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
+    
 }

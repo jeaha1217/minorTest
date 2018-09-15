@@ -16,19 +16,19 @@ import bitcamp.java110.cms.dao.MandatoryValueDaoExcecption;
 import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.domain.Student;
 
-//@Component
-public class StudentFile2Dao implements StudentDao{
+@Component
+public class StudentJdbcDao implements StudentDao{
     static String defaultFileName = "data/student2.dat";
     String fileName;
     
     private List<Student> list = new ArrayList<>();
     
-    public StudentFile2Dao() {
+    public StudentJdbcDao() {
         this(defaultFileName);
     }
     
     @SuppressWarnings("unchecked")
-    public StudentFile2Dao(String fileName) {
+    public StudentJdbcDao(String fileName) {
         this.fileName = fileName;
         File dataFile = new File(fileName);
         

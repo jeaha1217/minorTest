@@ -5,9 +5,7 @@ import java.util.Scanner;
 import bitcamp.java110.cms.annotaion.Autowired;
 import bitcamp.java110.cms.annotaion.Component;
 import bitcamp.java110.cms.annotaion.RequestMapping;
-import bitcamp.java110.cms.dao.DuplicationDaoException;
 import bitcamp.java110.cms.dao.ManagerDao;
-import bitcamp.java110.cms.dao.MandatoryValueDaoExcecption;
 import bitcamp.java110.cms.domain.Manager;
 
 @Component
@@ -40,7 +38,9 @@ public class ManagerAddController {
             m.setPosition(keyIn.nextLine());
             
             try {
-                managerDao.insert(m);
+                if(managerDao.insert(m) == 1) {
+                    System.out.println("저장했습니다.");
+                }
             }   catch (Exception e) {
                 System.out.println(e.getMessage());
             }

@@ -16,7 +16,7 @@ import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.dao.MandatoryValueDaoExcecption;
 import bitcamp.java110.cms.domain.Manager;
 
-@Component
+//@Component
 public class ManagerFile2Dao implements ManagerDao {
     static String defaultFileName = "data/manager2.dat";
     String fileName;

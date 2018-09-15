@@ -6,7 +6,7 @@ public class Manager extends Member{
     //  SerialVersion이 바뀌므로 defaultSerial 주기.
     protected String position;
     protected String tel;
-    
+
     public String getPosition() {
         return position;
     }
