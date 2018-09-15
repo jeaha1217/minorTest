@@ -34,17 +34,21 @@ public class TeacherAddController {
             System.out.print("전화 : ");
             t.setTel(keyIn.nextLine());
             
+            System.out.print("강의 과목 (예: 자바, C, C++) : ");
+            t.setSubject(keyIn.nextLine());
+
             System.out.print("급여 : ");
             try {
                 t.setPay(Integer.parseInt(keyIn.nextLine()));
             }   catch(Exception e) {
                 System.out.println("\n!!급여항목 입력 오류!!\n");
+                continue;
             }
-            System.out.print("강의 과목 (예: 자바, C, C++) : ");
-            t.setSubject(keyIn.nextLine());
             
             try {
-                teacherDao.insert(t);
+                if(teacherDao.insert(t) == 1) {
+                    System.out.println("저장했습니다.");
+                }
             }   catch (Exception e) {
                 System.out.println(e.getMessage());
             }

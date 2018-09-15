@@ -9,7 +9,7 @@ import bitcamp.java110.cms.annotaion.RequestMapping;
 public class Hidden{
     @RequestMapping("hidden")
     public void hidden(Scanner keyIn) {
-        System.out.println("Ah?");
+        System.out.println("\nAh?");
         System.out.println("Fuck You");
         System.out.println("Fuck You to Meet You");
     }

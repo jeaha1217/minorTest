@@ -19,12 +19,12 @@ public class TeacherDetailController {
         
     @RequestMapping("teacher/detail")
     public void detail(Scanner keyIn) {
-        System.out.print("조회할 강사의 이메일 : ");
-        String email = keyIn.nextLine();
-        Teacher teacher = teacherDao.findByEmail(email);
+        System.out.print("조회할 번호 : ");
+        int no = Integer.parseInt(keyIn.nextLine());
         
+        Teacher teacher = teacherDao.findByNo(no);
         if(teacher == null) {
-            System.out.println("해당하는 메일 주소가 없습니다.");
+            System.out.println("해당하는 번호가 없습니다.");
             return;
         }
         

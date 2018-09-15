@@ -118,11 +118,11 @@ public class ManagerJdbcDao implements ManagerDao {
                 inner join p1_memb m on m.mno = mr.mrno
             */
             String sql = " select " +
-                    "m.mno, " +
-                    "m.name, " +
-                    "m.email, " +
-                    "mr.posi " + 
-                    " \nfrom p1_mgr mr\n " + 
+                    " m.mno, " +
+                    " m.name, " +
+                    " m.email, " +
+                    " mr.posi " + 
+                    " from p1_mgr mr " + 
                     " inner join p1_memb m on m.mno = mr.mrno";
             
             System.out.println("\n" + sql + "\n");
@@ -220,7 +220,7 @@ public class ManagerJdbcDao implements ManagerDao {
                     " from p1_mgr mr " + 
                     " inner join p1_memb m on m.mno = mr.mrno " + 
                     " where m.mno =" + no;
-            System.out.println(sql);
+            System.out.println("\n" + sql);
             rs = stmt.executeQuery(sql);
             
             if(rs.next()) {
@@ -246,7 +246,7 @@ public class ManagerJdbcDao implements ManagerDao {
         }
     }
     
-    public int deleteByNo(int no) {
+    public int delete(int no) {
         Connection con = null;
         Statement stmt = null;
         

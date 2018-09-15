@@ -21,7 +21,7 @@ public class ManagerDeleteController {
         System.out.print("삭제할 번호 : ");
         int no = Integer.parseInt(keyIn.nextLine());
         
-        if(managerDao.deleteByNo(no) > 0) {
+        if(managerDao.delete(no) > 0) {
             System.out.println("삭제되었습니다.");
             return;
         }

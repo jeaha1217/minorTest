@@ -9,6 +9,6 @@ import bitcamp.java110.cms.annotaion.RequestMapping;
 public class Hell{
     @RequestMapping("hell")
     public void hello(Scanner keyIn) {
-        System.out.println("What the Hell..");
+        System.out.println("\nWhat the Hell..");
     }
 }

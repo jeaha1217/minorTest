@@ -41,7 +41,9 @@ public class StudentAddController {
             s.setTel(keyIn.nextLine());
             
             try {
-                studentDao.insert(s);
+                if(studentDao.insert(s) == 1) {
+                    System.out.println("저장했습니다.");
+                }
             }   catch (Exception e) {
                 System.out.println(e.getMessage());
             }
