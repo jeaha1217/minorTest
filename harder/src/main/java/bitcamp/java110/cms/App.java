@@ -1,30 +1,38 @@
 package bitcamp.java110.cms;
 import java.util.Scanner;
 
-import bitcamp.java110.cms.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping;
 import bitcamp.java110.cms.context.RequestMappingHandlerMapping.RequestMappingHandler;
 
 public class App {
+    //  복붙이라도 제대로 해야 취업을 한다고요...
 /*
     
 */
     static Scanner keyIn = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
-        ApplicationContext iocContainer = 
-                new ApplicationContext("bitcamp.java110.cms");
-
+        //  Spring IoC Container 사용
+        ClassPathXmlApplicationContext iocContainer =
+                new ClassPathXmlApplicationContext
+                ("bitcamp/java110/cms/conf/application-context.xml");
+        
+        // IoC 컨테이너가 생성한 객체 조회하기
+        System.out.println("------------------------");
+        String[] nameList = iocContainer.getBeanDefinitionNames();
+        for (String name : nameList) {
+            System.out.println(name);
+        }
+        System.out.println("------------------------");
+        
         RequestMappingHandlerMapping requestHandlerMap = 
                 new RequestMappingHandlerMapping();
 
-        //  IoC컨테이너에 보관된 객체의 이름 목록을 가져온다.
         String[] names = iocContainer.getBeanDefinitionNames();
         for(String name : names) {
-            // => 이름으로 객체를 꺼낸다.
             Object obj = iocContainer.getBean(name);
-
-            //  =>  객체에서 @RequestMapping이 붙은 메서드를 찾아 저장한다.
             requestHandlerMap.addMapping(obj);
         }
 
@@ -37,8 +45,6 @@ public class App {
                 break;
             }
             RequestMappingHandler mapping = requestHandlerMap.getMapping(menu);
-            //  keyIn을 인자값으로 강압적으로 준다. list 메소드 keyIn이 필요 없지만 받아야함.
-            //  복붙이라도 제대로 해야 취업을 한다고요...
 
             if(mapping == null) {
                 System.out.println("해당 메뉴가 없습니다.");
@@ -53,6 +59,7 @@ public class App {
             }
         }
         keyIn.close();
+        iocContainer.close();
     }
     private static String prompt() {
         System.out.print("\n메뉴> ");

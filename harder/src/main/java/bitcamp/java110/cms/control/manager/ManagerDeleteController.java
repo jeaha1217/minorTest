@@ -2,8 +2,9 @@ package bitcamp.java110.cms.control.manager;
 
 import java.util.Scanner;
 
-import bitcamp.java110.cms.annotaion.Autowired;
-import bitcamp.java110.cms.annotaion.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import bitcamp.java110.cms.annotaion.RequestMapping;
 import bitcamp.java110.cms.dao.ManagerDao;
 
