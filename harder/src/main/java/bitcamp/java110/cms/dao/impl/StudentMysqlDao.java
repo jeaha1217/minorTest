@@ -13,7 +13,7 @@ import bitcamp.java110.cms.dao.StudentDao;
 import bitcamp.java110.cms.domain.Student;
 
 @Component
-public class StudentJdbcDao implements StudentDao {
+public class StudentMysqlDao implements StudentDao {
     private String url = "jdbc:mariadb://localhost:3306/studydb";
     private String user = "study";
     private String pwd = "1111";
