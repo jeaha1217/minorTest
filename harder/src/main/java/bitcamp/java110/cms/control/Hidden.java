@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import org.springframework.stereotype.Component;
 
-import bitcamp.java110.cms.annotaion.RequestMapping;
+import bitcamp.java110.cms.annotation.RequestMapping;
 
 @Component
 public class Hidden{

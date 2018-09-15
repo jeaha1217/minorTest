@@ -3,7 +3,7 @@ package bitcamp.java110.cms.context;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 
-import bitcamp.java110.cms.annotaion.RequestMapping;
+import bitcamp.java110.cms.annotation.RequestMapping;
 //  명령어를 처리할 obj와 메서드정보를 보관함.
 public class RequestMappingHandlerMapping {
     

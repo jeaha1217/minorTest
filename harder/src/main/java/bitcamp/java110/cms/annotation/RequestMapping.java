@@ -1,4 +1,4 @@
-package bitcamp.java110.cms.annotaion;
+package bitcamp.java110.cms.annotation;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
