@@ -14,7 +14,7 @@ import java.util.Scanner;
             // 서버에 연결하기
             Socket socket = new Socket("localhost", 8888);
             
-            // 서버에 데이터를 보내고 읽을 도구를 준비하기
+                // 서버에 데이터를 보내고 읽을 도구를 준비하기
             PrintStream out = new PrintStream(
                                 new BufferedOutputStream(
                                         socket.getOutputStream()));
