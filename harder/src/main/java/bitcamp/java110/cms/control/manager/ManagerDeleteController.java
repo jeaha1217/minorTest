@@ -1,12 +1,14 @@
 package bitcamp.java110.cms.control.manager;
 
-import java.util.Scanner;
+import java.io.PrintWriter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import bitcamp.java110.cms.annotation.RequestMapping;
 import bitcamp.java110.cms.dao.ManagerDao;
+import bitcamp.java110.cms.server.Request;
+import bitcamp.java110.cms.server.Response;
 
 @Component
 public class ManagerDeleteController {
@@ -18,14 +20,14 @@ public class ManagerDeleteController {
     }
         
     @RequestMapping("manager/delete")
-    public void delete(Scanner keyIn) {
-        System.out.print("삭제할 번호 : ");
-        int no = Integer.parseInt(keyIn.nextLine());
+    public void delete(Request request, Response response) {
+        int no = Integer.parseInt(request.getParameter("no"));
+        PrintWriter out = response.getWriter();
         
         if(managerDao.delete(no) > 0) {
-            System.out.println("삭제되었습니다.");
+            out.println("삭제되었습니다.");
             return;
         }
-        System.out.println("해당하는 번호가 없습니다.");
+        out.println("해당하는 번호가 없습니다.");
     }
 }

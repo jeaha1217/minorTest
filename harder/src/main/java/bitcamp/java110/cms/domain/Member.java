@@ -4,11 +4,12 @@ import java.io.Serializable;
 
 public class Member implements Serializable{
     private static final long serialVersionUID = 1L;
-    //  
+
     protected int no;
     protected String name;
     protected String email;
     protected String password;
+    protected String tel;
     
     public int getNo() {
         return no;
@@ -22,6 +23,9 @@ public class Member implements Serializable{
     public String getPassword() {
         return password;
     }
+    public String getTel() {
+        return tel;
+    }
     public void setNo(int no) {
         this.no = no;
     }
@@ -33,6 +37,9 @@ public class Member implements Serializable{
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public void setTel(String tel) {
+        this.tel = tel;
     }
     
 }

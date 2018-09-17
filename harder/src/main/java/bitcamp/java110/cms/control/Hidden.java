@@ -10,12 +10,9 @@ import bitcamp.java110.cms.annotation.RequestMapping;
 public class Hidden{
     @RequestMapping("hidden")
     public void hidden(PrintStream out) {
-        out.println();out.flush();
-        out.println("\nAh?");out.flush();
-        out.println("Fuck You");out.flush();
-        out.println("Fuck You to Meet You");out.flush();
-        out.println();
-        out.flush();
+        out.println("\nAh?");
+        out.println("Fuck You");
+        out.println("Fuck You to Meet You");
     }
     
 }

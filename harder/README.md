@@ -1,5 +1,23 @@
 # java110-project minor-division
 
+## v2.6
+
+- client/Server 구조로 변경.
+- 소켓 프로그래밍 구현.
+- 멀티 쓰레딩 구현.
+- 프로토콜 개념 이해
+
+
+gradle build
+/Users/Sorrowkissed/git/java110/java110-project/build/libs
+java110-project.jar 생성.
+
+
+gradle clean
+gradle build
+
+dir에서 ./java110-project
+
 ## v2.5
 
 - Client/Server 구조로 변경

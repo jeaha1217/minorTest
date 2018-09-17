@@ -1,6 +1,6 @@
 package bitcamp.java110.cms.control.teacher;
 
-import java.util.Scanner;
+import java.io.PrintWriter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -8,56 +8,41 @@ import org.springframework.stereotype.Component;
 import bitcamp.java110.cms.annotation.RequestMapping;
 import bitcamp.java110.cms.dao.TeacherDao;
 import bitcamp.java110.cms.domain.Teacher;
+import bitcamp.java110.cms.server.Request;
+import bitcamp.java110.cms.server.Response;
 
 @Component
 public class TeacherAddController {
     TeacherDao teacherDao;
-    
+
     @Autowired
     public void setTeacherDao(TeacherDao teacherDao) {
         this.teacherDao = teacherDao;
     }
-        
+
     @RequestMapping("teacher/add")
-    public void add(Scanner keyIn) {
+    public void add(Request request, Response response) {
+        PrintWriter out = response.getWriter();
         while(true) {
             Teacher t = new Teacher();
-            
-            System.out.print("이름 : ");
-            t.setName(keyIn.nextLine());
-            
-            System.out.print("이메일 : ");
-            t.setEmail(keyIn.nextLine());
-            
-            System.out.print("암호 : ");
-            t.setPassword(keyIn.nextLine());
-            
-            System.out.print("전화 : ");
-            t.setTel(keyIn.nextLine());
-            
-            System.out.print("강의 과목 (예: 자바, C, C++) : ");
-            t.setSubject(keyIn.nextLine());
 
-            System.out.print("급여 : ");
+            t.setName(request.getParameter("name"));
+            t.setEmail(request.getParameter("email"));
+            t.setPassword(request.getParameter("password"));
+            t.setTel(request.getParameter("tel"));
+            t.setSubject(request.getParameter("subject"));
+
             try {
-                t.setPay(Integer.parseInt(keyIn.nextLine()));
+                t.setPay(Integer.parseInt(request.getParameter("pay")));
             }   catch(Exception e) {
-                System.out.println("\n!!급여항목 입력 오류!!\n");
+                out.println("\n!!급여항목 입력 오류!!\n");
                 continue;
             }
-            
-            try {
-                if(teacherDao.insert(t) == 1) {
-                    System.out.println("저장했습니다.");
-                }
-            }   catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-            
-            System.out.print("\nContinue? ( Y/n )");
-            String answer = keyIn.nextLine();
-            if(answer.toLowerCase().equals("n")) {
-                break;
+
+            if(teacherDao.insert(t) == 1) {
+                out.println("저장했습니다.");
+            }   else {
+                out.println("이미 존재하는 이메일 입니다.");
             }
         }
     }

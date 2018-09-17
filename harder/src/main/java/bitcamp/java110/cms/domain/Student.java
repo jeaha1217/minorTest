@@ -5,7 +5,6 @@ public class Student extends Member{
     
     protected String school;
     protected boolean working;
-    protected String tel;
     
     public String getSchool() {
         return school;
@@ -13,16 +12,11 @@ public class Student extends Member{
     public boolean isWorking() {
         return working;
     }
-    public String getTel() {
-        return tel;
-    }
+    
     public void setSchool(String school) {
         this.school = school;
     }
     public void setWorking(boolean working) {
         this.working = working;
-    }
-    public void setTel(String tel) {
-        this.tel = tel;
     }
 }

@@ -1,6 +1,6 @@
 package bitcamp.java110.cms.control.teacher;
 
-import java.util.Scanner;
+import java.io.PrintWriter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import bitcamp.java110.cms.annotation.RequestMapping;
 import bitcamp.java110.cms.dao.TeacherDao;
 import bitcamp.java110.cms.domain.Teacher;
+import bitcamp.java110.cms.server.Request;
+import bitcamp.java110.cms.server.Response;
 
 @Component
 public class TeacherDetailController {
@@ -19,21 +21,22 @@ public class TeacherDetailController {
     }
         
     @RequestMapping("teacher/detail")
-    public void detail(Scanner keyIn) {
-        System.out.print("조회할 번호 : ");
-        int no = Integer.parseInt(keyIn.nextLine());
+    public void detail(Request request, Response response) {
+        int no = Integer.parseInt(request.getParameter("no"));
         
         Teacher teacher = teacherDao.findByNo(no);
+        PrintWriter out = response.getWriter();
+        
         if(teacher == null) {
-            System.out.println("해당하는 번호가 없습니다.");
+            out.println("해당하는 번호가 없습니다.");
             return;
         }
         
-        System.out.printf("이름 : %s\n", teacher.getName());
-        System.out.printf("이메일 : %s\n", teacher.getEmail());
-        System.out.printf("암호 : %s\n", teacher.getPassword());
-        System.out.printf("전화 : %s\n", teacher.getTel());
-        System.out.printf("급여 : %d\n", teacher.getPay());
-        System.out.printf("과목 : %s\n", teacher.getSubject());
+        out.printf("이름 : %s\n", teacher.getName());
+        out.printf("이메일 : %s\n", teacher.getEmail());
+        out.printf("암호 : %s\n", teacher.getPassword());
+        out.printf("전화 : %s\n", teacher.getTel());
+        out.printf("급여 : %d\n", teacher.getPay());
+        out.printf("과목 : %s\n", teacher.getSubject());
     }
 }

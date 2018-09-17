@@ -10,9 +10,6 @@ import bitcamp.java110.cms.annotation.RequestMapping;
 public class Hell{
     @RequestMapping("hell")
     public void hello(PrintStream out) {
-        out.println();out.flush();
-        out.println("\nWhat the Hell..");out.flush();
-        out.println();out.flush();
-        out.flush();
+        out.println("\nWhat the Hell..");
     }
 }
