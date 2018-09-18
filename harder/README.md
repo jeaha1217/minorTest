@@ -1,5 +1,9 @@
 # java110-project minor-division
 
+## v2.8 (Stateless)
+
+- 멀티스레드 적용하기(Connection-Oriented에서 Stateless 방식으로 요청 처리)
+
 ## v2.7 (Stateful)
 
 - 멀티스레드 적용하기(Connection-Oriented에서 Stateful 방식으로 요청 처리)

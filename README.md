@@ -2,6 +2,10 @@
 
 비트캠프 자바 110기 복습 프로젝트
 
+## v2.8
+
+- 멀티스레드 적용하기(Connection-Oriented에서 Stateless 방식으로 요청 처리)
+
 ## v2.7
 
 - 멀티스레드 적용하기(Connection-Oriented에서 Statelful 방식으로 요청 처리)
