@@ -1,69 +1,44 @@
-//package bitcamp.java110.cms;
-//import java.util.Scanner;
-//
-//import org.springframework.context.support.ClassPathXmlApplicationContext;
-//
-//import bitcamp.java110.cms.context.RequestMappingHandlerMapping;
-//import bitcamp.java110.cms.context.RequestMappingHandlerMapping.RequestMappingHandler;
-//
-//public class App {
-//    //  복붙이라도 제대로 해야 취업을 한다고요...
-///*
-//    
-//*/
-//    static Scanner keyIn = new Scanner(System.in);
-//
-//    public static void main(String[] args) throws Exception {
-//        //  Spring IoC Container 사용
-//        ClassPathXmlApplicationContext iocContainer =
-//                new ClassPathXmlApplicationContext
-//                ("bitcamp/java110/cms/conf/application-context.xml");
-//        
-//        // IoC 컨테이너가 생성한 객체 조회하기
-//        System.out.println("------------------------");
-//        String[] nameList = iocContainer.getBeanDefinitionNames();
-//        for (String name : nameList) {
-//            System.out.println(name);
-//        }
-//        System.out.println("------------------------");
-//        
-//        RequestMappingHandlerMapping requestHandlerMap = 
-//                new RequestMappingHandlerMapping();
-//
-//        String[] names = iocContainer.getBeanDefinitionNames();
-//        for(String name : names) {
-//            Object obj = iocContainer.getBean(name);
-//            requestHandlerMap.addMapping(obj);
-//        }
-//
-//
-//        while(true) {
-//            String menu = prompt();
-//
-//            if(menu.equals("exit")) {
-//                System.out.println("Bye!");
-//                break;
-//            }
-//            RequestMappingHandler mapping = requestHandlerMap.getMapping(menu);
-//
-//            if(mapping == null) {
-//                System.out.println("해당 메뉴가 없습니다.");
-//                continue;
-//            }
-//            
-//            try {
-//                mapping.getMethod().invoke(mapping.getInstance(), keyIn);
-//            }   catch(Exception e) {
-//                System.out.println(e);
-//                System.out.println(e.getCause());
-//            }
-//        }
-//        keyIn.close();
-//        iocContainer.close();
-//    }
-//    private static String prompt() {
-//        System.out.print("\n메뉴> ");
-//        String menu = keyIn.nextLine();
-//        return menu;
-//    }
-//}
+package bitcamp.java110.cms;
+
+public class App {
+/*
+    
+*/
+    public static void main(String[] args) throws Exception {
+        Thread main = Thread.currentThread();
+        System.out.println(main.getName());
+        
+        ThreadGroup mainGroup = main.getThreadGroup();
+        System.out.println(mainGroup.getName());
+        
+        ThreadGroup systemGroup = mainGroup.getParent();
+        System.out.println(systemGroup.getName());
+        
+        
+        System.out.println("[스레드]");
+        Thread[] threads = new Thread[20];
+        int count = systemGroup.enumerate(threads, false);
+        for (int i = 0; i < count; i++) {
+            System.out.println(threads[i].getName());
+        }
+        
+        System.out.println("[스레드 그룹]");
+        ThreadGroup[] tgs = new ThreadGroup[20];
+        count = systemGroup.enumerate(tgs, false);
+        for (int i = 0; i < count; i++) {
+            System.out.println(tgs[i].getName());
+        }
+        
+        System.out.println("[main 그룹의 스레드]");
+        count = mainGroup.enumerate(threads, false);
+        for (int i = 0; i < count; i++) {
+            System.out.println(threads[i].getName());
+        }
+        
+        System.out.println("[Inno~ 그룹의 스레드]");
+        count = tgs[1].enumerate(threads, false);
+        for (int i = 0; i < count; i++) {
+            System.out.println(threads[i].getName());
+        }
+    }
+}
