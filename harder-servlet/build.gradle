@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'war'
+//  이런 방식으로도 플러그인 잡을 수 있음.
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+dependencies {
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+
+    compile 'com.google.guava:guava:23.0'
+    testCompile 'junit:junit:4.12'
+}
+
+repositories {
+    mavenCentral()
+}
+/*
+    서블릿 개발 환경 구축.
+        - servlet dir생성
+        - dir에서 gradle init
+        - dir - src dir 생성.
+            src
+                main
+                    java
+                    resources
+                    wepapp
+                test
+                    java
+                    resources
+        - 구조 생성
+        - gradle eclipse
+        - eclipse import
+*/
