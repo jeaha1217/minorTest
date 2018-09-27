@@ -9,20 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bitcamp.java110.cms.dao.impl.ManagerMysqlDao;
-import bitcamp.java110.cms.util.DataSource;
+import bitcamp.java110.cms.dao.ManagerDao;
 
 @WebServlet("/manager/delete")
 public class ManagerDeleteServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    ManagerMysqlDao managerDao;
-    
-    @Override
-    public void init() throws ServletException {
-        DataSource dataSource = new DataSource();
-        managerDao = new ManagerMysqlDao();
-        managerDao.setDataSource(dataSource);
-    }
     
     @Override
     protected void doGet(
@@ -32,6 +23,9 @@ public class ManagerDeleteServlet extends HttpServlet {
         response.setContentType("text/plain;charset=UTF-8");
         PrintWriter out = response.getWriter();
         int no = Integer.parseInt(request.getParameter("no"));
+
+        ManagerDao managerDao = (ManagerDao) this.getServletContext()
+                .getAttribute("managerDao");
         
         if(managerDao.delete(no) > 0) {
             out.println("삭제되었습니다.");

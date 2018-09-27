@@ -18,7 +18,8 @@ dependencies {
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
     
     // Spring IoC 컨테이너 관련 라이브러리 
-    compile group: 'org.springframework', name: 'spring-context', version: '5.0.9.RELEASE'
+    // compile group: 'org.springframework', name: 'spring-context', version: '5.0.9.RELEASE'
+        //  HttpServlet기능 공부를 위해 잠시 spring 기능을 뗌.
     // mariadb jdbc driver 
     compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.3.0'
     //  이클립스에서 리프레쉬, Referenced Libraries에서 mybatis-버젼.jar가 잡혀야 함.
