@@ -16,3 +16,7 @@ public class DataSource {
         return this.con;
     }
 }
+/*
+ 취업 최소 프로그래밍 요구조건.
+ "왜 하는지 의미를 알고" 어디에 무엇을 어떻게 복붙 해야 하는지 아는 것.
+*/
