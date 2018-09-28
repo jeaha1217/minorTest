@@ -10,6 +10,7 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
+    // Servlet API 라이브러리
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 
     compile 'com.google.guava:guava:23.0'
