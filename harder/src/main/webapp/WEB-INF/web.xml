@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  첫줃은 무조건 XML 선언부.
+  첫줄은 무조건 XML 선언부.
   /Users/Sorrowkissed/apache-tomcat-9.0.12/webapps/examples/WEB-INF
   에서 가져옴.
   재 복습 전에 꼭 ServletPart 공부를 하도록 하자.
