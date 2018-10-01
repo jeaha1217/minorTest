@@ -17,11 +17,12 @@ public class ManagerAddServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
     @Override
-    protected void doGet(
+    protected void doPost(
             HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/plain;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         Manager m = new Manager();
         
@@ -34,11 +35,25 @@ public class ManagerAddServlet extends HttpServlet {
         ManagerDao managerDao = (ManagerDao) this.getServletContext()
                 .getAttribute("managerDao");
         
-        if(managerDao.insert(m) == 1) {
-            out.println("저장했습니다.");
-        }   else    {
-            out.println("이미 존재하는 이메일 입니다.");
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<meta charset='UTF-8'>");
+        out.println("<title>매니져 관리</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>매니져 등록 결과</h1>");
+
+        try{
+            managerDao.insert(m);
+            out.println("<p>저장했습니다.</p>");
+        }   catch (Exception e) {
+            e.printStackTrace();
+            out.println("<p>등록 중 오류 발생!</p>");
         }
+        
+        out.println("</body>");
+        out.println("</html>");
     }
 }
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 첫줄은 무조건 XML 선언부.
+    DD file 이라고 부름. (Deployment Descriptor)
+    apache-tomcat-9.0.12/webapps/examples/WEB-INF
+    에서 복사해서 finder로 넣어줌. 
+-->
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+  version="4.0"
+  metadata-complete="true">
+
+    <description>
+      웹 에플리케이션에 대한 간단한 설명을 기술.
+    </description>
+    <display-name>서버 관리 페이지에 출력될 웹 에플리케이션 이름.</display-name>
+<!--  
+    <request-character-encoding>UTF-8</request-character-encoding>
+-->
+
+    <!-- Define example filters -->
+    <!-- Define filter mappings for the timing filters -->
+    <!-- Define example application events listeners -->
+    <!-- Define listeners required by examples -->
+    <!-- Define servlets that are included in the example application -->
+
+    <!-- Welcome File
+     클라이언트가 요청한 URL에 대해 기본 파일을 찾을 때 우선 순위 -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>

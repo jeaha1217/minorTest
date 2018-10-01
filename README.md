@@ -4,6 +4,14 @@
 
 Classroom Management System.
 
+## java110-project (tag: v4.3)
+
+- HTML 출력하기.
+
+## java110-project (tag: v4.2)
+
+- 리스너를 이용하여 공용 자원을 준비하기
+
 ## java110-project (tag: v4.1)
 
 - 서블릿의 loadOnStartup 배치 속성을 이용하여 공용 자원을 준비하기.

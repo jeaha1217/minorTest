@@ -74,7 +74,7 @@ public class ManagerMysqlDao implements ManagerDao {
             con = dataSource.getConnection();
             stmt = con.createStatement();
             
-            String sql = " select " +
+            String sql = "select " +
                     " m.mno, " +
                     " m.name, " +
                     " m.email, " +
@@ -113,14 +113,13 @@ public class ManagerMysqlDao implements ManagerDao {
             con = dataSource.getConnection();
             stmt = con.createStatement();
 
-            String sql = " select m.mno, m.name, m.email, m.pwd, m.tel mr.posi" + 
+            String sql =
+                    " select m.mno, m.name, m.email, m.pwd, m.tel mr.posi" + 
                     " from p1_mgr mr" + 
                     " inner join p1_memb m on m.mno = mr.mrno" +            
-
                     " where m.email = '" + email + "'";
-            
-            System.out.println(sql);
             rs = stmt.executeQuery(sql);
+            System.out.println(sql);
             
             if(rs.next()) {
                 Manager m = new Manager();
@@ -200,7 +199,7 @@ public class ManagerMysqlDao implements ManagerDao {
             if(count == 0) { return 0; }
             
             String sql2 = "delete from p1_memb where mno = " + no;
-            System.out.println(sql2);
+            System.out.println(sql2 + "\n");
             stmt.executeUpdate(sql2);
             con.commit();
             

@@ -17,11 +17,12 @@ public class TeacherAddServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
-    public void doGet(
+    public void doPost(
             HttpServletRequest request,
             HttpServletResponse response)
                     throws ServletException, IOException {
-        response.setContentType("text/plain;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         Teacher t = new Teacher();
 
@@ -31,19 +32,27 @@ public class TeacherAddServlet extends HttpServlet {
         t.setTel(request.getParameter("tel"));
         t.setSubject(request.getParameter("subject"));
 
-        try {
-            t.setPay(Integer.parseInt(request.getParameter("pay")));
-        }   catch(Exception e) {
-            out.println("\n!!급여항목 입력 오류!!\n");
-        }
-        
         TeacherDao teacherDao = (TeacherDao) this.getServletContext()
                 .getAttribute("teacherDao");
-        
-        if(teacherDao.insert(t) == 1) {
-            out.println("저장했습니다.");
-        }   else {
-            out.println("이미 존재하는 이메일 입니다.");
+
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<meta charset='UTF-8'>");
+        out.println("<title>강사 관리</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>강사 등록 결과</h1>");
+
+        try {
+            teacherDao.insert(t);
+            out.println("<p>저장하였습니다.</p>");
+        } catch(Exception e) {
+            e.printStackTrace();
+            out.println("<p>등록 중 오류 발생!</p>");
         }
+
+        out.println("</body>");
+        out.println("</html>");
     }
 }
