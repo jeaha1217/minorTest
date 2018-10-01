@@ -4,6 +4,10 @@
 
 Classroom Management System.
 
+## java110-project (tag: v4.4)
+
+- refresh, redirect 적용
+
 ## java110-project (tag: v4.3)
 
 - HTML 출력하기.

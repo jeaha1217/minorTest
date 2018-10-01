@@ -1,5 +1,11 @@
 # java110-project minor-division
 
+## v4.4
+
+- refresh, redirect 적용
+- 작업
+    - 등록 삭제한 후에 목록 페이지를 자동으로 요청하도록 refresh적용.
+
 
 ## v4.3
 
