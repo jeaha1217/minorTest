@@ -40,7 +40,7 @@ import javax.servlet.annotation.WebServlet;
   만약 이미 만든 서블릿에 대해 변경했을경우,
       10초 이내에 자동으로 로딩된다...?에??
 */ 
-@WebServlet("/ex01/servlet01")
+@WebServlet("/servlet01")
 public class Servlet01 implements Servlet {
     //  test : http://localhost:8888/ex01/servlet01
     ServletConfig config;

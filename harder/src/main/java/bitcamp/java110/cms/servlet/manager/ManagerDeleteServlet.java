@@ -1,7 +1,6 @@
 package bitcamp.java110.cms.servlet.manager;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,26 +30,14 @@ public class ManagerDeleteServlet extends HttpServlet {
             response.sendRedirect("list");
         }   catch (Exception e) {
             e.printStackTrace();
-            //  삭제 결과를 출력하고 3초가 경과한 후에 목록 페이지를 요청하도록
-            //  refresh 명령을 설정함.
-            //   => 응답 헤더로 refresh에 대한 명령을 웹브라우져에게 전달함.
+            //  삭제 결과를 출력하고 
+            //  add와 과정은 같다.
+            request.setAttribute("error", e);
+            request.setAttribute("message", "매니져 삭제 오류!");
             response.setHeader("refresh", "3;url=list");
-
-            response.setContentType("text/html;charset=UTF-8");
-            PrintWriter out = response.getWriter();
-
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<meta charset='UTF-8'>");
-            out.println("<title>매니져 관리</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>삭제 중 오류 발생!</h1>");
-            out.printf("<p>%s</p>\n", e.getMessage());
-            out.println("<p>잠시 기다리면 목록 페이지로 자동으로 이동합니다.</p>");
-            out.println("</body>");
-            out.println("</html>");
+            
+            //  한줄로 줄이기.
+            request.getRequestDispatcher("/error").forward(request, response);
         }
     }
 }

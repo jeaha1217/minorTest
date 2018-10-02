@@ -49,7 +49,7 @@ public class StudentListServlet extends HttpServlet {
         out.println("<thead>");
         out.println("<tr>");
         out.println("    <th>번호</th><th>이름</th><th>이메일</th> "
-                + "<th>최종학교</th><th>재직여부</th>");
+                + "<th>전화번호</th><th>최종학교</th><th>재직여부</th>");
         out.println("</tr>");
         out.println("</thead>");
         out.println("<tbody>");

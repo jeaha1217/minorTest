@@ -78,7 +78,8 @@ public class StudentMysqlDao implements StudentDao {
             String sql = "select" + 
                     " m.mno," +
                     " m.name," + 
-                    " m.email," + 
+                    " m.email," +
+                    " m.tel," +
                     " s.schl," +
                     " s.work" +
                     " from p1_stud s" + 
@@ -92,6 +93,7 @@ public class StudentMysqlDao implements StudentDao {
                 s.setEmail(rs.getString("email"));
                 s.setName(rs.getString("name"));
                 s.setSchool(rs.getString("schl"));
+                s.setTel(rs.getString("tel"));
                 s.setWorking(rs.getString("work").equals("Y") ? true : false);
                 
                 list.add(s);

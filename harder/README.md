@@ -1,11 +1,19 @@
 # java110-project minor-division
 
+## v4.5
+
+- forward, include 적용
+- 작업
+    - 여러 서블릿에서 공통적으로 수행하는 작업을 별도의 서블릿으로 분리한다.
+    - 그 서블릿으로 포워드를 수행한다.
+    - 예1) ErrorServlet 클래스 생성하고 포워드를 적용한다.
+    - 예2) HeaderServlet, FooterServlet 클래스를 생성하고 인클루드를 적용한다.
+
 ## v4.4
 
 - refresh, redirect 적용
 - 작업
-    - 등록 삭제한 후에 목록 페이지를 자동으로 요청하도록 refresh적용.
-
+    - 등록 or 삭제한 후에 목록 페이지를 자동으로 요청하도록 refresh적용.
 
 ## v4.3
 
