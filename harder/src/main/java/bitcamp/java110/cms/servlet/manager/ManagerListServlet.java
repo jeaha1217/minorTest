@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +36,10 @@ public class ManagerListServlet extends HttpServlet {
         out.println("<head>");
         out.println("<meta charset='UTF-8'>");
         out.println("<title>매니져 관리</title>");
+        
+        //  css 파일 첨부
+        out.println("<link rel='stylesheet' href='../css/common.css'>");
+        
         out.println("<style>");
         out.println("table, th, td {");
         out.println("    border: 1px solid gray;");
@@ -42,8 +47,11 @@ public class ManagerListServlet extends HttpServlet {
         out.println("</style>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>매니져 목록</h1>");
         
+        RequestDispatcher rd = request.getRequestDispatcher("/header");
+        rd.include(request, response);
+        
+        out.println("<h1>매니져 목록</h1>");
         out.println("<p><a href='form.html'>추가</a></p>");
         out.println("<table>");
         out.println("<thead>");
@@ -62,6 +70,14 @@ public class ManagerListServlet extends HttpServlet {
             out.printf("    <td>%s</td>\n", m.getPosition());
             out.println("</tr>");
         }
+        out.println("</tbody>");
+        out.println("</table>");
+        
+        rd = request.getRequestDispatcher("/footer");
+        rd.include(request, response);
+        
+        out.println("</body>");
+        out.println("</html>");
     }
 }
 
