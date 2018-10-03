@@ -1,5 +1,12 @@
 # java110-project minor-division
 
+## v4.6
+
+- 쿠키 적용하기
+- 작업
+    - 로그인 폼을 제작한다.
+    - 아이디 저장 기능을 쿠키로 구현한다.
+    
 ## v4.5
 
 - forward, include 적용

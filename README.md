@@ -4,6 +4,10 @@
 
 Classroom Management System.
 
+## java110-project (tag: v4.6)
+
+- 쿠키 적용하기
+
 ## java110-project (tag: v4.5)
 
 - forward, include 적용.
