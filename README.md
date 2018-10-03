@@ -4,6 +4,14 @@
 
 Classroom Management System.
 
+## java110-project (tag: v4.8)
+
+- 필터를 이용하여 사용 권한 제어하기
+
+## java110-project (tag: v4.7)
+
+- 세션 적용하기
+
 ## java110-project (tag: v4.6)
 
 - 쿠키 적용하기
