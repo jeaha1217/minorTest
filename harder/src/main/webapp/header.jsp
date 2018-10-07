@@ -2,7 +2,7 @@
 <%@page import="bitcamp.java110.cms.domain.Teacher"%>
 <%@page import="bitcamp.java110.cms.domain.Manager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" trimDirectiveWhitespaces%>
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 
 <header>
 	<h1>비트캠프</h1>
@@ -11,7 +11,7 @@
 Member loginUser = (Member)session.getAttribute("loginUser");
 if(loginUser == null){
 %>
-        <li><a href='../../servlet/auth/login'>로그인</a></li>
+        <li><a href='/auth/login'>로그인</a></li>
 <%
 } else {
     String loginType = "학생";
@@ -21,13 +21,12 @@ if(loginUser == null){
         loginType = "강사";
     }
 %>
-    <li>[<%=loginType%>]<%=loginUser.getName()%>(<a href=/auth/logout>로그아웃</a>)</li>
+        <li>[<%=loginType%>]<%=loginUser.getName()%>(<a href=/auth/logout>로그아웃</a>)</li>
 <%
 }
 %>
-		
-		<li><a href='/student/list'>학생관리</a></li>
-		<li><a href='/teacher/list'>강사관리</a></li>
-		<li><a href='/manager/list'>매니저관리</a></li>
-	</ul>
+        <li><a href='/student/list'>학생관리</a></li>
+        <li><a href='/teacher/list'>강사관리</a></li>
+        <li><a href='/manager/list'>매니저관리</a></li>
+    </ul>
 </header>

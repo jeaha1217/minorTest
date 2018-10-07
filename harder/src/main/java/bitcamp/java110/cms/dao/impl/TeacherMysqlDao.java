@@ -187,7 +187,6 @@ public class TeacherMysqlDao implements TeacherDao {
         try {
             con = dataSource.getConnection();
 
-
             con.setAutoCommit(false);
             stmt = con.createStatement();
 
@@ -195,8 +194,9 @@ public class TeacherMysqlDao implements TeacherDao {
             System.out.println("\n" + sql1);
             int count = stmt.executeUpdate(sql1);
 
-            if (count == 0)
-                return 0;
+            if (count == 0) {
+                throw new Exception("일치하는 번호가 없습니다");
+            }
 
             String sql2 = "delete from p1_memb where mno=" + no;
             System.out.println(sql2 + "\n");

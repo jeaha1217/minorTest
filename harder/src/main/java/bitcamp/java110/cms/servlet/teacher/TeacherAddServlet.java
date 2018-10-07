@@ -15,7 +15,19 @@ import bitcamp.java110.cms.domain.Teacher;
 @WebServlet("/teacher/add")
 public class TeacherAddServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
+    
+    @Override
+    protected void doGet(
+            HttpServletRequest request,
+            HttpServletResponse response)
+                    throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        
+        RequestDispatcher rd = request.getRequestDispatcher
+                ("/teacher/form.jsp");
+        rd.include(request, response);
+    }
+    
     @Override
     public void doPost(
             HttpServletRequest request,

@@ -1,7 +1,6 @@
 package bitcamp.java110.cms.servlet.manager;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -23,61 +22,53 @@ public class ManagerListServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        //  jsp가 사용할 데이터 준비
         
         ManagerDao managerDao = (ManagerDao) this.getServletContext()
                 .getAttribute("managerDao");
         
         List<Manager> list = managerDao.findAll();
-
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<meta charset='UTF-8'>");
-        out.println("<title>매니져 관리</title>");
         
-        //  css 파일 첨부
-        out.println("<link rel='stylesheet' href='../css/common.css'>");
+        response.setContentType("text/html;charset=UTF-8");
         
-        out.println("<style>");
-        out.println("table, th, td {");
-        out.println("    border: 1px solid gray;");
-        out.println("}");
-        out.println("</style>");
-        out.println("</head>");
-        out.println("<body>");
+        // jsp가 사용할 수 있도록 ServletRequest 보관소에 저장
+        request.setAttribute("list", list);
         
-        RequestDispatcher rd = request.getRequestDispatcher("/header");
+        //  jsp로 실행 위임
+        RequestDispatcher rd = request.getRequestDispatcher
+                ("/manager/list.jsp");
         rd.include(request, response);
-        
-        out.println("<h1>매니져 목록</h1>");
-        out.println("<p><a href='form.html'>추가</a></p>");
-        out.println("<table>");
-        out.println("<thead>");
-        out.println("<tr>");
-        out.println("    <th>번호</th><th>이름</th><th>이메일</th><th>직위</th>");
-        out.println("</tr>");
-        out.println("</thead>");
-        out.println("<tbody>");
-        
-        for(Manager m : list) {
-            out.println("<tr>");
-            out.printf("    <td>%d</td>\n", m.getNo());
-            out.printf("    <td><a href='detail?no=%d'>%s</a></td>\n",
-                                        m.getNo(), m.getName());
-            out.printf("    <td>%s</td>\n", m.getEmail());
-            out.printf("    <td>%s</td>\n", m.getPosition());
-            out.println("</tr>");
-        }
-        out.println("</tbody>");
-        out.println("</table>");
-        
-        rd = request.getRequestDispatcher("/footer");
-        rd.include(request, response);
-        
-        out.println("</body>");
-        out.println("</html>");
     }
 }
 
+/*
+Servlet은 이제 UI를 생성하는 코드가 없음.
+UI생성은 JSP에서 담당.
+
+Servlet
+    - 클라이언트 요청을 받고, 요청 파라메터 값을 사용하기 적합하게 가공하는 역할.
+    - DAO를 호출하여 준비함.
+    - JSP에게 실행을 위임.
+    - "Controller" component 라고 부름.
+DAO
+    - DBMS와 연동, 데이터를 처리함.
+    - "Model" component 라고 부름.
+JSP
+    - 틀라이언트가 출력할 화면 생성.
+    - "view" component 라고 부름.
+
+클라이언트 요청이 들어왔을 때
+이렇게 역할을 쪼개어 처리하는 방식을
+MVC architecture(Model) 이라고 부름.
+
+MVC 모델 1
+    요청 ---> JSP ---> DAO ---> DBMS
+        <---     <---     <---
+        
+ MVC 모델 2
+    요청 ---> Servlet ---> DAO ---> DBMS
+                ^ |
+                | |
+                | v
+             JSP 페이지
+*/
