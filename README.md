@@ -4,6 +4,11 @@
 
 Classroom Management System.
 
+## java110-project (tag: v4.9)
+
+- JSP를 활용한 MVC 모델 1 타입 적용
+- Servlet + JSP를 활용한 MVC 모델 2 타입 적용
+
 ## java110-project (tag: v4.8)
 
 - 필터를 이용하여 사용 권한 제어하기
